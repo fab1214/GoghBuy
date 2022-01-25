@@ -8,6 +8,14 @@ const resolvers = {
 			return User.findOne().select("-__v -password");
 		},
 	},
+
+	Mutation: {
+		addUser: async (parent, args) => {
+			const user = await User.create(args);
+
+			return user;
+		},
+	},
 };
 
 module.exports = resolvers;
