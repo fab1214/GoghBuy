@@ -21,6 +21,7 @@ const typeDefs = gql`
 	}
 
 	input ProductInput {
+		_id: ID
 		title: String
 		description: String
 		image: String

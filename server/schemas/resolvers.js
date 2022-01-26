@@ -4,7 +4,6 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
 	Query: {
-		// FIXME: giving "Not logged in" error
 		me: async (parent, args, context) => {
 			if (context.user) {
 				const userData = await User.findOne({ _id: context.user._id }).select(
@@ -58,12 +57,16 @@ const resolvers = {
 			return { token, user };
 		},
 
-		// FIXME: giving "Not logged in" error
 		addProduct: async (parent, { productData }, context) => {
 			if (context.user) {
-				const createdProduct = await User.findByIdAndUpdate(
+				const createdProduct = await Product.create({
+					...productData,
+					username: context.user.username,
+				});
+
+				await User.findByIdAndUpdate(
 					{ _id: context.user._id },
-					{ $addToSet: { products: productData } },
+					{ $push: { products: productData } },
 					{ new: true }
 				);
 
