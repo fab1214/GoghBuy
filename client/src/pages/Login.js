@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { useMutation } from '@apollo/client';
 // import { LOGIN_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+// import Auth from '../utils/auth';
 
 function Login() {
   //create states for form values
@@ -37,7 +37,7 @@ function Login() {
   const signIn = async (e) => {
     e.preventDefault();
     // try {
-    // //   const {data} = await loginUser({
+    // //   const {data} = await login({
     // //     variables: {...formState} 
     // //   });
     //   Auth.login(data.login.token)
@@ -55,16 +55,17 @@ function Login() {
   const register = async (e) => {
     e.preventDefault();
     // try {
-    // //   const {data} = await loginUser({
+    // //   const {data} = await addUser({
     // //     variables: {...formState} 
     // //   });
-    //   Auth.login(data.login.token)
+    //   Auth.login(data.addUser.token)
     // }catch(e){
     //   console.error(e);
     // }
     // ///clear form values
     // setFormState({
     //   email: '',
+    //   username: '',
     //   password: ''
     // });
     console.log(formState);
