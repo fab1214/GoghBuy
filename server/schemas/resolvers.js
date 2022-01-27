@@ -57,6 +57,8 @@ const resolvers = {
 			return { token, user };
 		},
 
+		// FIXME: figure out categories
+		// ADD A PRODUCT
 		addProduct: async (parent, { productData }, context) => {
 			if (context.user) {
 				const createdProduct = await Product.create({
@@ -71,6 +73,21 @@ const resolvers = {
 				);
 
 				return createdProduct;
+			}
+
+			throw new AuthenticationError("Not logged in.");
+		},
+
+		// TODO: REMOVE A PRODUCT
+		removeProduct: async (parent, { productData }, context) => {
+			if (context.user) {
+				const updatedUser = await User.findOneAndUpdate(
+					{ _id: context.user._id },
+					{ $pull: { products: { productData } } },
+					{ new: true }
+				);
+
+				return updatedUser;
 			}
 
 			throw new AuthenticationError("Not logged in.");
