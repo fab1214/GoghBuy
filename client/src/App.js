@@ -1,5 +1,7 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { Flex, Spacer, Box } from "@chakra-ui/react";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
 	ApolloProvider,
@@ -44,6 +46,13 @@ function App() {
 		<ChakraProvider>
 			<ApolloProvider client={client}>
 				<Router>
+					{/* PLACEHOLDER HEADER */}
+					<Flex bg="#849bc5">
+						<Box p="4">goghBuy</Box>
+						<Spacer />
+						<Box p="4">Cart</Box>
+					</Flex>
+
 					<div>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/login" component={Login} />

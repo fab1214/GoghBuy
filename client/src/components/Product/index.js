@@ -1,7 +1,6 @@
 import React from "react";
 // import Chakra UI
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Button, Box, Image, Heading, Text } from "@chakra-ui/react";
 
 // import testing images
 import "../../assets/stylesheets/Product.css";
@@ -9,32 +8,39 @@ import starryNight from "../../assets/img/art/starry-night.png";
 
 const Product = ({ id, title, image, price, rating }) => {
 	return (
-		<div className="product">
-			<div className="product-info">
-				{/* Title */}
-				<p>{title}</p>
+		<Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
+			<Heading>{title}</Heading>
+			<Text>{price}</Text>
+			<Image boxSize="100px" objectFit="contain" src={image} alt="Art" />
+			<Button colorScheme="blue">Add to Cart</Button>
+		</Box>
 
-				{/* Price */}
-				<p className="product-price">
-					<small>$</small>
-					<strong>{price}</strong>
-				</p>
+		// <div className="product">
+		// 	<div className="product-info">
+		// 		{/* Title */}
+		// 		<p>{title}</p>
 
-				{/* Rating */}
-				<div className="product-rating">
-					{Array(rating)
-						.fill()
-						.map((_, i) => (
-							<p>⭐</p>
-						))}
-				</div>
+		// 		{/* Price */}
+		// 		<p className="product-price">
+		// 			<small>$</small>
+		// 			<strong>{price}</strong>
+		// 		</p>
 
-				{/* Image */}
-				<img className="product-img" src={image} alt="Starry Night" />
+		// 		{/* Rating */}
+		// 		<div className="product-rating">
+		// 			{Array(rating)
+		// 				.fill()
+		// 				.map((_, i) => (
+		// 					<p>⭐</p>
+		// 				))}
+		// 		</div>
 
-				<Button colorScheme="blue">Add to Basket</Button>
-			</div>
-		</div>
+		// 		{/* Image */}
+		// 		<img className="product-img" src={image} alt="Starry Night" />
+
+		// 		<Button colorScheme="blue">Add to Basket</Button>
+		// 	</div>
+		// </div>
 	);
 };
 
