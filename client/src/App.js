@@ -1,5 +1,5 @@
 import React from "react";
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloProvider,
@@ -10,7 +10,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 import Login from "./pages/Login";
-import SignUp from './pages/SignUp';
+import SignUp from "./pages/SignUp";
+import Cart from './pages/Cart';
 
 //establish new link to GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({
@@ -41,14 +42,17 @@ const client = new ApolloClient({
 function App() {
   return (
     <ChakraProvider>
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
-        </div>
-      </Router>
-    </ApolloProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          <div>
+            <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path='/cart' component={Cart} />
+            </Switch>
+          </div>
+        </Router>
+      </ApolloProvider>
     </ChakraProvider>
   );
 }

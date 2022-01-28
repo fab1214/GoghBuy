@@ -53,7 +53,7 @@ function SignUp() {
   };
 
   return (
-      <Flex justify="center">
+    <Flex  direction ='column' align='center'>
         <Box w="30%" borderWidth="1px" borderRadius="lg" my="10%" p={4}>
           <form onSubmit={register}>
               <Text fontSize='3xl' align='center'>Register</Text>
