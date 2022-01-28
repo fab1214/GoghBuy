@@ -7,6 +7,7 @@ import {
   Input,
   Stack,
   InputLeftElement,
+  InputRightElement,
   InputGroup,
   FormControl,
   Text
@@ -23,7 +24,7 @@ function SignUp() {
     email: "",
     password: "",
   });
-  const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
   const { username, email, password } = formState;
   // update state based on form input changes
   const handleChange = (e) => {
@@ -33,6 +34,11 @@ function SignUp() {
       [name]: value,
     });
   };
+
+  //show/hide password functionality
+  const [show, setShow] = React.useState(false)
+  const handleClick = () => setShow(!show)
+
 
   const register = async (e) => {
     e.preventDefault();
@@ -48,8 +54,8 @@ function SignUp() {
 
   return (
       <Flex justify="center">
-        <Box w="25%" borderWidth="1px" borderRadius="lg" my="10%" p={4}>
-          <form>
+        <Box w="30%" borderWidth="1px" borderRadius="lg" my="10%" p={4}>
+          <form onSubmit={register}>
               <Text fontSize='3xl' align='center'>Register</Text>
             <Stack spacing={3}>
               <FormControl isRequired>
@@ -79,24 +85,28 @@ function SignUp() {
               </FormControl>
 
               <FormControl isRequired>
-                <InputGroup>
-                  <InputLeftElement children={<LockIcon />} />
-                  <Input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    value={password}
-                    onChange={handleChange}
-                  />
-                </InputGroup>
-              </FormControl>
+              <InputGroup>
+                <InputLeftElement children={<LockIcon />} />
+                <Input
+                  type={show ? 'text' : 'password'}
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={handleChange}
+                />
+                <InputRightElement width="4.5rem">
+                  <Button h='1.75rem' size='sm' onClick={handleClick}>
+                    {show ? 'Hide' : 'Show'}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
 
               <Button
                 colorScheme="orange"
                 size="md"
                 type="submit"
                 my="3"
-                onClick={register}
               >
                 Register
               </Button>
