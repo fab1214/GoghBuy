@@ -1,17 +1,15 @@
 import React from "react";
 import Subtotal from "../components/Subtotal";
+import { Heading, Box } from "@chakra-ui/react";
 
 function Cart() {
   return (
-    <div className="cart">
-      <div className="cart_left">
-        <h2>Your Shopping Basket</h2>
-      </div>
-    
-      <div className="cart_right">
-          <Subtotal />
-      </div>
-    </div>
+    <>
+    <Box bg='gray.50' overflow='hidden'>
+    <Heading align='center' borderBottom='1px' borderColor='gray.200'>Your Shopping Cart</Heading>
+    <Subtotal />
+    </Box>
+    </>
   );
 }
 

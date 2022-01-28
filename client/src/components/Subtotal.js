@@ -11,8 +11,8 @@ import {
 
 function Subtotal() {
     return (
-        <Flex direction ='column' align='center' justify='center'>
-         <Box w="20%" borderWidth="1px" borderRadius="lg" my="10%" p={4} align='center'>
+        <Flex direction ='column' align='end' pr={10}>
+         <Box  bg='white' w="20%" borderWidth="1px" borderRadius="lg" my="10%" p={4} align='center'>
           <CurrencyFormat
             renderText={(value) => (
               <>
