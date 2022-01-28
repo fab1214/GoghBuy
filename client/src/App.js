@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import {
   ApolloProvider,
   ApolloClient,
@@ -10,6 +10,8 @@ import { setContext } from "@apollo/client/link/context";
 
 import Login from "./pages/Login";
 import SignUp from './pages/SignUp';
+import { StoreProvider } from "./utils/GlobalState";
+import Navbar from "./components/Navbar";
 
 //establish new link to GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({
@@ -42,8 +44,13 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
+          <StoreProvider>
+            <Navbar />
+           
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} />
+           
+          </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
