@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { ChakraProvider } from '@chakra-ui/react'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloProvider,
   ApolloClient,
@@ -41,6 +42,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    <ChakraProvider>
     <ApolloProvider client={client}>
       <Router>
         <div>
@@ -54,6 +56,7 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+    </ChakraProvider>
   );
 }
 
