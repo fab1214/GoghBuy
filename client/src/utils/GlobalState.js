@@ -9,9 +9,9 @@ const StoreProvider = ({value = [], ...props}) => { //props used to be passed to
     const [state, dispatch] = useProductReducer({
         products: [],
         cart: [],
-        cartOpen: false,
-        categories: [],
-        currentCategory: ''
+        // // cartOpen: false,
+        // categories: [],
+        // currentCategory: ''
     });
     console.log(state);
     return <Provider value={[state, dispatch]}{...props} />;

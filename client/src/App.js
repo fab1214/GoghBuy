@@ -13,6 +13,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import Cart from './pages/Cart';
+// import { StoreProvider } from './utils/GlobalState';
+
 
 //establish new link to GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({
@@ -45,6 +47,7 @@ function App() {
     <ChakraProvider>
       <ApolloProvider client={client}>
         <Router>
+        {/* <StoreProvider> */}
           <Navbar />
           <div>
             <Switch>
@@ -54,6 +57,7 @@ function App() {
             <Route exact path='/cart' component={Cart} />
             </Switch>
           </div>
+          {/* </StoreProvider> */}
         </Router>
       </ApolloProvider>
     </ChakraProvider>

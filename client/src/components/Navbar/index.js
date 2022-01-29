@@ -4,12 +4,15 @@ import useStyles from "./styles";
 import { AppBar, Toolbar, IconButton, Badge, Box, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import { useStateValue } from "../../StateProvider";
+
 
 const pages = ['Products', 'Profile', 'Blog', 'Logout'];
 const pages2 = ['Login', 'SignUp']
 
 function Navbar() {
     const classes = useStyles();
+	const [{ cart }, dispatch] = useStateValue();
 
     function showNavigation() {
         if (Auth.loggedIn) {
@@ -60,7 +63,7 @@ function Navbar() {
                     <Link to="/cart">
                     <div>
                         <IconButton aria-label="Show cart items" color="inherit">
-                            <Badge badgeContent={2} color="secondary">
+                            <Badge badgeContent={cart?.length} color="secondary">
                                 <ShoppingCart />
                             </Badge>
                         </IconButton>

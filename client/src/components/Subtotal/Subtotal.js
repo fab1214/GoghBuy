@@ -9,8 +9,12 @@ import {
     Heading
 } from '@chakra-ui/react';
  import { ArrowRightIcon } from '@chakra-ui/icons';
-
+ import { useStateValue } from "../../StateProvider";
+import { getCartTotal} from '../../reducer';
 function Subtotal() {
+
+  const [{ cart }, dispatch] = useStateValue();
+
     return (
       <>
         <Flex direction ='column' align='end' pr={10}>
@@ -20,7 +24,7 @@ function Subtotal() {
               <>
                 <p>
                   {/* Part of the homework */}
-                  Subtotal (2 items): <strong>{value}</strong>
+                  Subtotal ({cart.length}): <strong>{value}</strong>
                 </p>
                 <small className="subtotal__gift">
                   <input type="checkbox" /> This order contains a gift
@@ -28,7 +32,7 @@ function Subtotal() {
               </>
             )}
             decimalScale={2}
-            value={1000} // Part of the homework
+            value={getCartTotal(cart)} // Part of the homework
             displayType={"text"}
             thousandSeparator={true}
             prefix={"$"}

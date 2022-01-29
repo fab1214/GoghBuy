@@ -9,7 +9,14 @@ function Cart() {
     <Navbar />
     <Heading align='center' borderBottom='1px' borderColor='gray.200'>Your Shopping Cart</Heading>
     <Box bg='gray.50' overflow='hidden'>
+    {/* Cart Item */}
+    {/* Cart Item */}
+    {/* Cart Item */}
+    {/* Cart Item */}
+    {/* Cart Item */}
+
     <Subtotal />
+
     </Box>
     </>
   );

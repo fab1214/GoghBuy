@@ -48,6 +48,7 @@ const Home = () => {
 						rating={4}
 					/>
 					<Product
+						id="124567"
 						title="Skeleton Smoking"
 						price={69.99}
 						image={skeletonSmoking}
