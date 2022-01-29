@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import {
     Button,
     Box,
-    Flex
+    Flex,
+    Heading
 } from '@chakra-ui/react';
  import { ArrowRightIcon } from '@chakra-ui/icons';
 
 function Subtotal() {
     return (
+      <>
         <Flex direction ='column' align='end' pr={10}>
          <Box  bg='white' w="20%" borderWidth="1px" borderRadius="lg" my="10%" p={4} align='center'>
           <CurrencyFormat
@@ -38,6 +40,7 @@ function Subtotal() {
           </Link>
         </Box>
         </Flex>
+        </>
       );
     }
 export default Subtotal;

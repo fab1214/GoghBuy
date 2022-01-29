@@ -8,6 +8,7 @@ import { Stack, HStack, VStack } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Flex, Spacer } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 
 // import images
 const banner = require("../assets/img/polygonal19.jpg");

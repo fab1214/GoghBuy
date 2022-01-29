@@ -3,7 +3,7 @@ import Auth from "../../utils/auth";
 import useStyles from "./styles";
 import { AppBar, Toolbar, IconButton, Badge, Button, Box, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
-
+import { Link } from  'react-router-dom';
 const pages = ['Products', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -47,7 +47,9 @@ function Navbar() {
                 <Toolbar>
                     <Typography variant="h6" className={classes.title} color="inherit">
                         <img src={1} alt="" height="25px" className={classes.image} />
+                        <Link to ='/'>
                         goughbuy
+                        </Link>
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
                         {pages.map((page) => (
@@ -60,13 +62,17 @@ function Navbar() {
                             </Button>
                         ))}
                     </Box>
+                    <Link to='cart'>
                     <div className={classes.button}>
                         <IconButton aria-label="Show cart items" color="inherit">
                             <Badge badgeContent={2} color="secondary">
+                                
                                 <ShoppingCart />
+                                
                             </Badge>
                         </IconButton>
                     </div>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </>
