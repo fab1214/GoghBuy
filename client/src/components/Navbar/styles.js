@@ -1,3 +1,4 @@
+import { blue, red } from '@material-ui/core/colors';
 import { makeStyles, alpha} from '@material-ui/core/styles';
 
 const drawerWidth = 0;
@@ -5,6 +6,7 @@ const drawerWidth = 0;
 export default makeStyles((theme) => ({
   appBar: {
     boxShadow: 'none',
+    color: blue,
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -19,6 +21,10 @@ export default makeStyles((theme) => ({
   },
   image: {
     marginRight: '10px',
+  },
+  menu: {
+    height: '50px',
+    border: '1px dotted green'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -51,6 +57,9 @@ export default makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  box: {
+    border: '1px solid blue'
   },
   inputRoot: {
     color: 'inherit',
