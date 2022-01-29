@@ -4,6 +4,9 @@ import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 import {
+  Box,
+  Flex,
+  Button,
   Input,
   Stack,
   InputLeftElement,
@@ -13,10 +16,6 @@ import {
   Text
 } from "@chakra-ui/react";
 import { LockIcon, EmailIcon } from "@chakra-ui/icons";
-import { Button } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
-import { Flex } from "@chakra-ui/react";
-
 
 function Login() {
   //create states for form values
@@ -57,8 +56,8 @@ function Login() {
   };
 
   return (
-    <Flex justify="center">
-        <Box w="30%" borderWidth="1px" borderRadius="lg" my="10%" p={4}>
+    <Flex  direction ='column' align='center'>
+    <Box w="30%" borderWidth="1px" borderRadius="lg" my="10%" p={4}>
         <form onSubmit={signIn}>
             <Text fontSize='3xl' align='center'>Sign In</Text>
           <Stack spacing={3}>
