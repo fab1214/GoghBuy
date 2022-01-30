@@ -1,55 +1,48 @@
-const faker = require("faker");
-
 const db = require("../config/connection");
-const { User, Product, Category } = require("../models");
+const { User, Product } = require("../models");
 
 db.once("open", async () => {
-	await User.deleteMany({});
-	await Product.deleteMany({});
+	await Product.deleteMany();
 
-	// create user data
-	// const userData = [];
+	const products = await Product.insertMany([
+		{
+			title: "Starry Night",
+			description: "A painting of a starry night.",
+			image: "starry-night.png",
+			price: 25,
+			quantity: 10,
+		},
+		{
+			title: "Skeleton Smoking",
+			description: "A spooky skeleton that happens to be smoking",
+			image: "skeleton-smoking.jpg",
+			price: 500,
+			quantity: 2,
+		},
+		{
+			title: "Cottage Garden",
+			description:
+				"Just some painting of a random cottage that happens to have a garden",
+			image: "cottage-garden.png",
+			price: 15,
+			quantity: 30,
+		},
+	]);
 
-	// for (let i = 0; i < 50; i += 1) {
-	// 	const username = faker.internet.userName();
-	// 	const email = faker.internet.email(username);
-	// 	const password = faker.internet.password();
+	console.log("products seeded");
+	console.log(products);
 
-	// 	userData.push({ username, email, password });
-	// }
+	await User.deleteMany();
 
-	// const createdUsers = await User.collection.insertMany(userData);
+	await User.create({
+		username: "Van Gogh",
+		email: "gogh@gmail.com",
+		password: "test12345",
+		profilePic: "van-gogh.png",
+		products: [products[0], products[1], products[2]],
+	});
 
-	// create products
-	// let createdProducts = [];
-	// for (let i = 0; i < 100; i += 1) {
-	// 	const title = faker.commerce.product();
-	// 	const description = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-	// 	const image = faker.image.image(200);
-	// 	const price = faker.commerce.price();
-	// 	const quantity = faker.random.number();
-	// 	const category = faker.commerce.department();
+	console.log("users seeded");
 
-	// 	const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-	// 	const { username, _id: userId } = createdUsers.ops[randomUserIndex];
-
-	// 	const createdProducts = await Product.create({
-	// 		title,
-	// 		description,
-	// 		image,
-	// 		price,
-	// 		quantity,
-	// 		category,
-	// 	});
-
-	// 	const updatedUser = await User.updateOne(
-	// 		{ _id: userId },
-	// 		{ $push: { products: createdProducts._id } }
-	// 	);
-
-	// 	createdProducts.push(createdProducts);
-	// }
-
-	console.log("all done!");
-	process.exit(0);
+	process.exit();
 });
