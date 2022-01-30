@@ -13,8 +13,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import Cart from './pages/Cart';
-// import { StoreProvider } from './utils/GlobalState';
-
+import  { StateProvider } from './StateProvider';
+import reducer, { initialState } from './reducer';
 
 //establish new link to GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({
@@ -47,7 +47,7 @@ function App() {
     <ChakraProvider>
       <ApolloProvider client={client}>
         <Router>
-        {/* <StoreProvider> */}
+        <StateProvider initialState={initialState} reducer={reducer}>
           <Navbar />
           <div>
             <Switch>
@@ -57,7 +57,7 @@ function App() {
             <Route exact path='/cart' component={Cart} />
             </Switch>
           </div>
-          {/* </StoreProvider> */}
+          </StateProvider>
         </Router>
       </ApolloProvider>
     </ChakraProvider>

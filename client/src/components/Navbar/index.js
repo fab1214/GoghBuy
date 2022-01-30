@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Auth from "../../utils/auth";
 import useStyles from "./styles";
 import { AppBar, Toolbar, IconButton, Badge, Box, Typography } from '@material-ui/core';
