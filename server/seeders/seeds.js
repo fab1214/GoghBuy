@@ -1,55 +1,121 @@
-const faker = require("faker");
+const db = require('../config/connection');
+const { User, Product, Category } = require('../models');
 
-const db = require("../config/connection");
-const { User, Product, Category } = require("../models");
+db.once('open', async () => {
+  await Category.deleteMany();
 
-db.once("open", async () => {
-	await User.deleteMany({});
-	await Product.deleteMany({});
+  console.log('categories seeded');
 
-	// create user data
-	// const userData = [];
+  await Product.deleteMany();
 
-	// for (let i = 0; i < 50; i += 1) {
-	// 	const username = faker.internet.userName();
-	// 	const email = faker.internet.email(username);
-	// 	const password = faker.internet.password();
+  const products = await Product.insertMany([
+    {
+      title: 'Trees',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      price: 50.99,
+      quantity: 10
+    },
+    {
+      title: 'Football',
+      description:
+        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
+      image: 'canned-coffee.jpg',
+      price: 35.99,
+      quantity: 15
+    },
+    {
+      title: 'Child',
+      description:
+        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna.',
+      image: 'toilet-paper.jpg',
+      price: 47.99,
+      quantity: 20
+    },
+    {
+      title: 'Inside House',
+      description:
+        'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felisl.',
+      image: 'soap.jpg',
+      price: 18.99,
+      quantity: 50
+    },
+    {
+      title: 'Snowflakes',
+      description:
+        'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Aenean aliquam sagittis rutrum.',
+      image: 'wooden-spoons.jpg',
+      price: 14.99,
+      quantity: 100
+    },
+    {
+      title: 'Baseball',
+      description:
+        'Vestibulum risus metus, luctus non tortor quis consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
+      image: 'camera.jpg',
+      price: 399.99,
+      quantity: 30
+    },
+    {
+      title: 'Landscape',
+      description:
+        'In sodales, ipsum quis ultricies porttitor, tellus urnas purusi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
+      image: 'tablet.jpg',
+      price: 199.99,
+      quantity: 30
+    },
+    {
+      title: 'Family',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elituis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
+      image: 'bedtime-book.jpg',
+      price: 69.99,
+      quantity: 100
+    },
+    {
+      title: 'Ocean Landscape',
+      description: 'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
+      image: 'spinning-top.jpg',
+      price: 15.99,
+      quantity: 15
+    },
+    {
+      title: 'Dogs',
+      description:
+        'Sed a mauris condimentum, elementum enim in, dui. Phasellus lobortis leo odioturpis porta quis.',
+      image: 'plastic-horses.jpg',
+      price: 24.99,
+      quantity: 100
+    },
+  ]);
 
-	// 	userData.push({ username, email, password });
-	// }
+  const categories = await Category.insertMany([
+    { name: 'Outdoors', products: [products[0]._id, products[1]._id] },
+    { name: 'Portraits', products: [products[2]._id, products[3]._id] },
+    { name: 'French', products: [products[4]._id, products[5]._id] },
+    { name: 'Sports', products: [products[6]._id, products[7]._id] },
+    { name: 'Random', products: [products[8]._id, products[9]._id] }
+  ]);
 
-	// const createdUsers = await User.collection.insertMany(userData);
+  console.log('products seeded');
 
-	// create products
-	// let createdProducts = [];
-	// for (let i = 0; i < 100; i += 1) {
-	// 	const title = faker.commerce.product();
-	// 	const description = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-	// 	const image = faker.image.image(200);
-	// 	const price = faker.commerce.price();
-	// 	const quantity = faker.random.number();
-	// 	const category = faker.commerce.department();
+  await User.deleteMany();
 
-	// 	const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-	// 	const { username, _id: userId } = createdUsers.ops[randomUserIndex];
+  await User.create({
+    username: 'Sandra',
+    email: 'sandra@testmail.com',
+    password: 'password1234'
+  });
 
-	// 	const createdProducts = await Product.create({
-	// 		title,
-	// 		description,
-	// 		image,
-	// 		price,
-	// 		quantity,
-	// 		category,
-	// 	});
+  await User.create({
+    username: 'Peter',
+    email: 'pete@testmail.com',
+    password: 'password1234'
+  });
 
-	// 	const updatedUser = await User.updateOne(
-	// 		{ _id: userId },
-	// 		{ $push: { products: createdProducts._id } }
-	// 	);
+  console.log('users seeded');
 
-	// 	createdProducts.push(createdProducts);
-	// }
-
-	console.log("all done!");
-	process.exit(0);
+  process.exit();
 });
+
