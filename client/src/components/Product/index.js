@@ -4,7 +4,7 @@ import { Button, Box, Image, Heading, Text } from "@chakra-ui/react";
 
 // import testing images
 import "../../assets/stylesheets/Product.css";
-import starryNight from "../../assets/img/art/starry-night.png";
+// import starryNight from "../../assets/img/art/starry-night.png";
 
 const Product = ({ id, title, image, price, rating }) => {
 	return (

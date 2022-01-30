@@ -2,36 +2,51 @@ import React from "react";
 // import components
 import Product from "../components/Product";
 import Artist from "../components/Artist";
+// import apollo hooks
+import { useQuery } from "@apollo/client";
+import { QUERY_USERS } from "../utils/queries";
 // import stylesheet & Chakra UI
 import "../assets/stylesheets/Home.css";
-import { Stack, HStack, VStack } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
-import { Flex, Spacer } from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
+import { HStack, Box } from "@chakra-ui/react";
 
 // import images
-const banner = require("../assets/img/polygonal19.jpg");
+// const banner = require("../../public/Images/poly");
 
 const Home = () => {
-	const goghPic = require("../assets/img/van-gogh.png");
-	const daliPic = require("../assets/img/salvador-dali.png");
-
-	const starryNight = require("../assets/img/art/starry-night.png");
-	const skeletonSmoking = require("../assets/img/art/skeleton-smoking.jpg");
-	const cottage = require("../assets/img/art/cottage-garden.png");
-	const blossom = require("../assets/img/art/almond-blossoms.png");
-	const selfPortrait = require("../assets/img/art/self-portrait.png");
-	const park = require("../assets/img/art/park.jpg");
-	const disintegration = require("../assets/img/art/disintegration.jpg");
-	const memory = require("../assets/img/art/memory.jpg");
+	// const goghPic = require("../assets/img/van-gogh.png");
+	// const daliPic = require("../assets/img/salvador-dali.png");
+	// const starryNight = require("../assets/img/art/starry-night.png");
+	// const skeletonSmoking = require("../assets/img/art/skeleton-smoking.jpg");
+	// const cottage = require("../assets/img/art/cottage-garden.png");
+	// const blossom = require("../assets/img/art/almond-blossoms.png");
+	// const selfPortrait = require("../assets/img/art/self-portrait.png");
+	// const park = require("../assets/img/art/park.jpg");
+	// const disintegration = require("../assets/img/art/disintegration.jpg");
+	// const memory = require("../assets/img/art/memory.jpg");
+	const { loading, error, data } = useQuery(QUERY_USERS);
+	const users = data?.users || {};
+	if (loading) return <p>Loading...</p>;
+	console.log(users);
 
 	return (
 		<div className="home">
 			<div className="home-container">
-				<img className="home-banner" src={banner} alt="banner" />
+				<img
+					className="home-banner"
+					src={"/images/polygonal19.jpg"}
+					alt="banner"
+				/>
 
 				<HStack spacing={8}>
-					<Artist
+					{users.map((users) => (
+						<Artist
+							key={users._id}
+							id={users._id}
+							name={users.username}
+							image={users.profilePic}
+						/>
+					))}
+					{/* <Artist
 						id="123123"
 						name="Van Gogh"
 						image={goghPic}
@@ -58,10 +73,17 @@ const Home = () => {
 						price={20.99}
 						image={cottage}
 						rating={2}
-					/>
+					/> */}
 				</HStack>
+			</div>
+		</div>
+	);
+};
 
-				<HStack spacing={8}>
+export default Home;
+
+{
+	/* <HStack spacing={8}>
 					<Product
 						id="123453"
 						title="The Disintegration of the Persistence of Memory"
@@ -86,7 +108,7 @@ const Home = () => {
 					/>
 				</HStack>
 
-				{/* <div className="home-row">
+				<div className="home-row">
 					<Artist />
 					<Product
 						id="123451"
@@ -101,9 +123,9 @@ const Home = () => {
 						image={skeletonSmoking}
 						rating={5}
 					/>
-				</div> */}
+				</div>
 
-				{/* <div className="home-row">
+				<div className="home-row">
 					<Product
 						id="123452"
 						title="Cottage Garden"
@@ -135,10 +157,5 @@ const Home = () => {
 						image={park}
 						rating={1}
 					/>
-				</div> */}
-			</div>
-		</div>
-	);
-};
-
-export default Home;
+				</div> */
+}

@@ -4,9 +4,8 @@ import { Box, Image, Heading, Text } from "@chakra-ui/react";
 
 import "../../assets/stylesheets/Artist.css";
 // import testing image
-import profilePicture from "../../assets/img/van-gogh.png";
 
-const Artist = ({ id, name, image, description }) => {
+const Artist = ({ id, name, image }) => {
 	return (
 		<Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
 			<Heading fontSize="x1">{name}</Heading>
@@ -14,10 +13,10 @@ const Artist = ({ id, name, image, description }) => {
 				borderRadius="full"
 				boxSize="150px"
 				// className="artist-pfp"
-				src={image}
+				src={`/images/${image}`}
 				alt="Artist's Profile Picture"
 			/>
-			<Text mt={4}>{description}</Text>
+			{/* <Text mt={4}>{description}</Text> */}
 		</Box>
 
 		// <div className="artist">
