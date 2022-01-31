@@ -39,7 +39,7 @@ function Subtotal() {
           />
           <Link to='/login'>
           <Button colorScheme="orange" size="sm" type="submit" mt={2}>
-          Proceed to Checkout<div className='icon'><ArrowRightIcon /></div>
+          Proceed to Payment<div className='icon'><ArrowRightIcon /></div>
           </Button>
           </Link>
         {/* </Box> */}
