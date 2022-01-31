@@ -16,7 +16,7 @@ const typeDefs = gql`
 		title: String
 		description: String
 		image: String
-		price: Int
+		price: Float
 		quantity: Int
 	}
 
@@ -25,7 +25,7 @@ const typeDefs = gql`
 		title: String
 		description: String
 		image: String
-		price: Int
+		price: Float
 		quantity: Int
 	}
 
@@ -35,10 +35,17 @@ const typeDefs = gql`
 		products: [Product]
 	}
 
+	type Category {
+		_id: ID
+		name: String
+		products: [Product]
+	}
+
 	type Query {
 		me: User
 		users: [User]
 		user(username: String!): User
+		categories: [Category]
 	}
 
 	type Mutation {

@@ -1,4 +1,4 @@
-const { User, Product } = require("../models");
+const { User, Product, Category } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -28,6 +28,12 @@ const resolvers = {
 				.populate("products")
 				.populate("orders");
 		},
+
+		categories: async (parent, args, context) => {
+			const category = await Category.find({}).populate('products')
+			console.log(category)
+			return category;
+		}
 	},
 
 	Mutation: {
