@@ -17,8 +17,8 @@ function Subtotal() {
 
     return (
       <>
-        <Flex direction ='column' align='end' pr={10}>
-         <Box bg='white' w="20%" borderWidth="1px" borderRadius="lg" my="10%" p={4} align='center'>
+        {/* <Flex direction ='column' justify='space-between' pr={10} > */}
+         {/* <Box bg='white' w="20%" borderWidth="1px" borderRadius="lg" my="10%" p={4} align='center'> */}
           <CurrencyFormat
             renderText={(value) => (
               <>
@@ -42,8 +42,8 @@ function Subtotal() {
           Proceed to Checkout<div className='icon'><ArrowRightIcon /></div>
           </Button>
           </Link>
-        </Box>
-        </Flex>
+        {/* </Box> */}
+        {/* </Flex> */}
         </>
       );
     }

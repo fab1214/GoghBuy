@@ -4,8 +4,8 @@ import './index.css';
 
 function CartItem({ id, title, image, price, rating }) {
   return (
-      <>
-      <img className="checkout__item" src={image} />
+      <div className='checkout__item'>
+      <img className="checkout__image" src={image} />
       <p>{title}</p>
       <p>{price}</p>
       <Flex direction="row">
@@ -15,7 +15,7 @@ function CartItem({ id, title, image, price, rating }) {
             <p>⭐</p>
           ))}
       </Flex>
-      </>
+      </div>
   );
 }
 
