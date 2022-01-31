@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
-import Cart from './pages/Cart';
+import Cart from './pages/Cart/Cart.js';
 import  { StateProvider } from './StateProvider';
 import reducer, { initialState } from './reducer';
 
