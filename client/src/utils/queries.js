@@ -7,6 +7,7 @@ export const QUERY_ME = gql`
 			username
 			email
 			profilePic
+			bio
 			products {
 				_id
 				title
@@ -30,6 +31,7 @@ export const QUERY_USERS = gql`
 			username
 			email
 			profilePic
+			bio
 			products {
 				_id
 				title
@@ -49,6 +51,7 @@ export const QUERY_USER = gql`
 			username
 			email
 			profilePic
+			bio
 			products {
 				_id
 				title

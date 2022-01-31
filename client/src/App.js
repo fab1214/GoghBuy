@@ -1,6 +1,7 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Flex, Spacer, Box } from "@chakra-ui/react";
+import "./assets/stylesheets/Home.css";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
@@ -11,7 +12,8 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
+import HomeFeed from "./pages/HomeFeed";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
@@ -52,9 +54,14 @@ function App() {
 						<Spacer />
 						<Box p="4">Cart</Box>
 					</Flex>
+					<img
+						className="home-banner"
+						src={"/images/polygonal19.jpg"}
+						alt="banner"
+					/>
 
 					<div>
-						<Route exact path="/" component={Home} />
+						<Route exact path="/" component={HomeFeed} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/signup" component={SignUp} />
 					</div>
