@@ -11,7 +11,7 @@ const productSchema = new Schema({
 		type: String,
 		required: true,
 		minlength: 5,
-		maxlength: 250,
+		maxlength: 1000,
 	},
 	image: {
 		type: String,
@@ -27,12 +27,7 @@ const productSchema = new Schema({
 		required: true,
 		min: 0,
 		default: 0,
-	},
-	// category: {
-	//     type: Schema.Types.ObjectId,
-	//     ref: 'Category',
-	//     required: true
-	// }
+	}
 });
 
 const Product = mongoose.model("Product", productSchema);

@@ -1,3 +1,4 @@
+
 const db = require("../config/connection");
 const { User, Product } = require("../models");
 
@@ -71,3 +72,4 @@ db.once("open", async () => {
 
 	process.exit();
 });
+
