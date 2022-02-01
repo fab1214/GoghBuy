@@ -15,7 +15,7 @@ export const QUERY_ME = gql`
         price
         quantity
       }
-      orders {
+      order {
         _id
         purchaseDate
         products {

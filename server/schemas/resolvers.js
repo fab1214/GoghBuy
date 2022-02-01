@@ -51,10 +51,10 @@ const resolvers = {
 		order: async (parent, { _id }, context) => {
 			if (context.user){
 				const user = await User.findById(context.user._id).populate({
-					path: 'orders.products',
+					path: 'order.products',
 					populate: 'category',
 				});
-				return user.orders.id(_id);
+				return user.order.id(_id);
 			}
 		},
 
@@ -69,7 +69,7 @@ const resolvers = {
 
       for (let i = 0; i < products.length; i++) {
         const product = await stripe.products.create({
-          name: products[i].name,
+          title: products[i].title,
           description: products[i].description,
           images: [`${url}/images/${products[i].image}`],
         });

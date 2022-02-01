@@ -23,7 +23,7 @@ import { useStateValue } from "../../StateProvider";
 			title: title,
 			image: image,
 			price: price,
-			rating: rating,
+			// rating: rating,
 		  },
 		});
 	  };
@@ -40,7 +40,7 @@ import { useStateValue } from "../../StateProvider";
 				alt="Art image"
 			/>
 			<Text>{description}</Text>
-			<Button colorScheme="blue">Add to Cart</Button>
+			<Button colorScheme="blue" onClick={addToCart}>Add to Cart</Button>
 		</Box>
 	);
 };

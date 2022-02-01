@@ -10,7 +10,7 @@ const typeDefs = gql`
 		profilePic: String
 		bio: String
 		products: [Product]
-		orders: [Order]
+		order: [Order]
 	}
 
 	type Product {
@@ -39,7 +39,7 @@ const typeDefs = gql`
 
 	type Category {
 		_id: ID
-		name: String
+		title: String
 		products: [Product]
 	}
 
@@ -58,12 +58,10 @@ const typeDefs = gql`
 
 		products(_id: ID!): [Product]
 		product(_id: ID!): Product
-
 		user(username: String!): User
 		categories: [Category]
 		order(_id: ID!) : Order
 		checkout(products: [ID]!): Checkout
-		products(category: ID, name: String!): [Product]
 	}
 
 	type Mutation {
