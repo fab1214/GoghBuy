@@ -1,5 +1,8 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { Flex, Spacer, Box } from "@chakra-ui/react";
+import "./assets/stylesheets/Home.css";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
 	ApolloProvider,
@@ -8,6 +11,7 @@ import {
 	createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";

@@ -29,11 +29,24 @@ const resolvers = {
 				.populate("orders");
 		},
 
+
+		// GET ALL PRODUCTS
+		products: async (parent, { username }) => {
+			const params = username ? { username } : {};
+			return Product.find(params).sort({ createdAt: -1 });
+		},
+
+		// GET ONE USER'S PRODUCT
+		product: async (parent, { _id }) => {
+			return Product.findOne({ _id });
+		},
+
 		categories: async (parent, args, context) => {
 			const category = await Category.find({}).populate('products')
 			console.log(category)
 			return category;
 		}
+
 	},
 
 	Mutation: {
