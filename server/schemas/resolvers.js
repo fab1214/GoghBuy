@@ -65,11 +65,11 @@ const resolvers = {
 
 	  console.log(order);
 	  
-      const { products } = await order.populate("products").execPopulate();
+      const { products } = await order.populate("products");
 
       for (let i = 0; i < products.length; i++) {
         const product = await stripe.products.create({
-          title: products[i].title,
+          name: products[i].title,
           description: products[i].description,
           images: [`${url}/images/${products[i].image}`],
         });
