@@ -3,6 +3,11 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
 		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 		sans-serif;
+	/* background-image: url("../public/images/paint-splatter.jpg") !important;
+	height: 100%;
+	width: 100%;
+	background-position: center;
+	background-size: cover; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
