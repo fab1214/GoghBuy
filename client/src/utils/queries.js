@@ -1,6 +1,7 @@
-import {gql} from '@apollo/client';
 
-export const QUERY_USER = gql`
+import { gql } from "@apollo/client";
+
+export const QUERY_ME = gql`
 {
     me {
       _id
@@ -30,6 +31,70 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+	query {
+		users {
+			_id
+			username
+			email
+			profilePic
+			bio
+			products {
+				_id
+				title
+				description
+				image
+				price
+				quantity
+			}
+		}
+	}
+`;
+
+export const QUERY_USER = gql`
+query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      products {
+        _id
+        title
+        description
+        image
+        price
+        quantity
+      }
+    }
+  }
+`;
+
+export const QUERY_PRODUCTS = gql`
+	query products($username: String) {
+		products(username: $username) {
+			_id
+			title
+			description
+			image
+			price
+			quantity
+		}
+	}
+`;
+
+export const QUERY_PRODUCT = gql`
+	query product($id: ID!) {
+		product(_id: $id) {
+			_id
+			title
+			description
+			image
+			price
+			quantity
+		}
+	}
+`;
+
 export const QUERY_CATEGORIES = gql`
 query {
     categories {
@@ -45,3 +110,5 @@ query {
     }
   }
 `;
+
+
