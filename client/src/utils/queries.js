@@ -15,7 +15,7 @@ export const QUERY_ME = gql`
         price
         quantity
       }
-      orders {
+      order {
         _id
         purchaseDate
         products {
@@ -111,4 +111,10 @@ query {
   }
 `;
 
-
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($products: [ID]!) {
+    checkout(products: $products) {
+      session
+    }
+  }
+`;

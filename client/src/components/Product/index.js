@@ -2,10 +2,11 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCT } from "../../utils/queries";
 import { Button, Box, Image, Heading, Text, Flex } from "@chakra-ui/react";
+
 import "../../assets/stylesheets/Product.css";
 import { useStateValue } from "../../StateProvider";
-
-const Product = (item) => {
+  
+  const Product = (item) => {
 	const { id, title, price, image, description } = item;
 	console.log(item);
 
@@ -16,14 +17,14 @@ const Product = (item) => {
 	const addToCart = () => {
 		// dispatch the item into the data layer
 		dispatch({
-			type: "ADD_TO_CART",
-			product: {
-				id: id,
-				title: title,
-				image: image,
-				price: price,
-				// rating: rating,
-			},
+		  type: "ADD_TO_CART",
+		  product: {
+			id: id,
+			title: title,
+			image: image,
+			price: price,
+			// rating: rating,
+		  },
 		});
 	};
 
@@ -39,9 +40,7 @@ const Product = (item) => {
 				alt="Art image"
 			/>
 			<Text>{description}</Text>
-			<Button colorScheme="blue" onClick={addToCart}>
-				Add to Cart
-			</Button>
+			<Button colorScheme="blue" onClick={addToCart}>Add to Cart</Button>
 		</Box>
 	);
 };
