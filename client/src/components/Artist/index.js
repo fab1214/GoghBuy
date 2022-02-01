@@ -1,45 +1,47 @@
 import React from "react";
-// import Chakra UI
-import { Box, Image, Heading, Text } from "@chakra-ui/react";
+import { useQuery } from "@apollo/client";
+import { QUERY_USER } from "../../utils/queries";
+import Product from "../Product";
 
+import { Box, Image, Heading, Text, HStack, Button } from "@chakra-ui/react";
 import "../../assets/stylesheets/Artist.css";
-// import testing image
-import profilePicture from "../../assets/img/van-gogh.png";
 
-const Artist = ({ id, name, image, description }) => {
+const Artist = (item) => {
+	const { _id, name, bio, profilePic } = item;
+
+	const { loading, data } = useQuery(QUERY_USER, {
+		variables: { username: name },
+	});
+
+	if (loading) return <div>Loading...</div>;
+
+	const productData = data?.user.products || {};
+	console.log(productData);
+
 	return (
+		// <HStack>
 		<Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
 			<Heading fontSize="x1">{name}</Heading>
 			<Image
 				borderRadius="full"
 				boxSize="150px"
-				// className="artist-pfp"
-				src={image}
+				className="artist-pfp"
+				src={`/images/${profilePic}`}
 				alt="Artist's Profile Picture"
 			/>
-			<Text mt={4}>{description}</Text>
+			<Text>{bio}</Text>
+
+			{productData.map((products) => (
+				<Product
+					key={products._id}
+					title={products.title}
+					price={products.price}
+					image={products.image}
+					description={products.description}
+				/>
+			))}
 		</Box>
-
-		// <div className="artist">
-		// 	<div className="artist-info">
-		// 		{/* Name */}
-		// 		<p>{name}</p>
-
-		// 		{/* PFP */}
-		// 		<Image
-		// 			borderRadius="full"
-		// 			boxSize="150px"
-		// 			// className="artist-pfp"
-		// 			src={image}
-		// 			alt="Artist's Profile Picture"
-		// 		/>
-
-		// 		{/* Brief description */}
-		// 		<p className="artist-desc">
-		// 			<p>{description}</p>
-		// 		</p>
-		// 	</div>
-		// </div>
+		// </HStack>
 	);
 };
 
