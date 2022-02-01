@@ -11,7 +11,7 @@ function Cart() {
 
   return (
     <div>
-      <Heading align="center" borderBottom="1px" borderColor="gray.200" mt='6%' pt='10px' pb='30px'>
+      <Heading align="center" borderBottom="1px" borderColor="gray.200" pb='30px'>
         Your Shopping Cart
       </Heading>
       <Box bg="gray.50" overflow="hidden">

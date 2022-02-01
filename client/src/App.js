@@ -58,6 +58,7 @@ function App() {
 							className="home-banner"
 							src={"/images/polygonal19.jpg"}
 							alt="banner"
+							
 						/>
 						<div>
 							<Switch>
