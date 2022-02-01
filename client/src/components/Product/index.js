@@ -39,33 +39,6 @@ const Product = ({ id, title, image, price, rating }) => {
 			<Image boxSize="100px" objectFit="contain" src={image} alt="Art" />
 			<Button colorScheme="blue" onClick = {addToCart}>Add to Cart</Button>
 		</Box>
-
-		// <div className="product">
-		// 	<div className="product-info">
-		// 		{/* Title */}
-		// 		<p>{title}</p>
-
-		// 		{/* Price */}
-		// 		<p className="product-price">
-		// 			<small>$</small>
-		// 			<strong>{price}</strong>
-		// 		</p>
-
-		// 		{/* Rating */}
-		// 		<div className="product-rating">
-		// 			{Array(rating)
-		// 				.fill()
-		// 				.map((_, i) => (
-		// 					<p>⭐</p>
-		// 				))}
-		// 		</div>
-
-		// 		{/* Image */}
-		// 		<img className="product-img" src={image} alt="Starry Night" />
-
-		// 		<Button colorScheme="blue">Add to Basket</Button>
-		// 	</div>
-		// </div>
 	);
 };
 
