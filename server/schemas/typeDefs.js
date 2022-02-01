@@ -51,7 +51,7 @@ const typeDefs = gql`
 	type Mutation {
 		addUser(username: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
-		addProduct(productData: ProductInput): Product
+		addProduct(productData: ProductInput!): Product
 		removeProduct(productData: ProductInput): User
 	}
 

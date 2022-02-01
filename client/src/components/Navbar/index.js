@@ -12,10 +12,11 @@ const pages2 = ['Login', 'SignUp']
 
 function Navbar() {
     const classes = useStyles();
-	const [{ cart }, dispatch] = useStateValue();
+    const [{ cart }, dispatch] = useStateValue();
 
     function showNavigation() {
-        if (Auth.loggedIn) {
+        console.log(Auth.loggedIn())
+        if (Auth.loggedIn()) {
             return (
                 <>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'space-evenly' }}>
@@ -33,20 +34,22 @@ function Navbar() {
                 </>
             )
         } else {
-            <>
-                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'space-evenly' }}>
-                    {pages2.map((page) => (
-                        <Link
-                            className={classes.link}
-                            to={"/" + page.toLowerCase()}
-                            key={page}
-                            sx={{ my: 2, color: 'white', display: 'flex' }}
-                        >
-                            {page}
-                        </Link>
-                    ))}
-                </Box>
-            </>
+            return (
+                <>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'space-evenly' }}>
+                        {pages2.map((page) => (
+                            <Link
+                                className={classes.link}
+                                to={"/" + page.toLowerCase()}
+                                key={page}
+                                sx={{ my: 2, color: 'white', display: 'flex' }}
+                            >
+                                {page}
+                            </Link>
+                        ))}
+                    </Box>
+                </>
+            )
         }
     }
     return (
@@ -56,18 +59,18 @@ function Navbar() {
                     <Typography variant="h6" className={classes.title} color="inherit">
                         <img src={1} alt="" className={classes.image} />
                         <Link to="/">
-                        goughbuy
+                            goughbuy
                         </Link>
                     </Typography>
                     {showNavigation()}
                     <Link to="/cart">
-                    <div>
-                        <IconButton aria-label="Show cart items" color="inherit">
-                            <Badge badgeContent={cart?.length} color="secondary">
-                                <ShoppingCart />
-                            </Badge>
-                        </IconButton>
-                    </div>
+                        <div>
+                            <IconButton aria-label="Show cart items" color="inherit">
+                                <Badge badgeContent={cart?.length} color="secondary">
+                                    <ShoppingCart />
+                                </Badge>
+                            </IconButton>
+                        </div>
                     </Link>
                 </Toolbar>
             </AppBar>
