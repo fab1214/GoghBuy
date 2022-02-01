@@ -2,35 +2,30 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCT } from "../../utils/queries";
 import { Button, Box, Image, Heading, Text, Flex } from "@chakra-ui/react";
-
-const Product = (item) => {
-	const { title, price, image, description } = item;
-	console.log(item);
-
 import "../../assets/stylesheets/Product.css";
 import { useStateValue } from "../../StateProvider";
-  
-  const Product = (item) => {
-	const { title, price, image, description } = item;
+
+const Product = (item) => {
+	const { id, title, price, image, description } = item;
 	console.log(item);
 
 	const [{ cart }, dispatch] = useStateValue();
 
-	console.log('This is the cart >>>', cart)
+	console.log("This is the cart >>>", cart);
 
 	const addToCart = () => {
 		// dispatch the item into the data layer
 		dispatch({
-		  type: "ADD_TO_CART",
-		  product: {
-			id: id,
-			title: title,
-			image: image,
-			price: price,
-			rating: rating,
-		  },
+			type: "ADD_TO_CART",
+			product: {
+				id: id,
+				title: title,
+				image: image,
+				price: price,
+				// rating: rating,
+			},
 		});
-	  };
+	};
 
 	return (
 		<Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
@@ -44,7 +39,9 @@ import { useStateValue } from "../../StateProvider";
 				alt="Art image"
 			/>
 			<Text>{description}</Text>
-			<Button colorScheme="blue">Add to Cart</Button>
+			<Button colorScheme="blue" onClick={addToCart}>
+				Add to Cart
+			</Button>
 		</Box>
 	);
 };

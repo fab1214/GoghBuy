@@ -34,6 +34,7 @@ const Artist = (item) => {
 			{productData.map((products) => (
 				<Product
 					key={products._id}
+					id={products._id}
 					title={products.title}
 					price={products.price}
 					image={products.image}
