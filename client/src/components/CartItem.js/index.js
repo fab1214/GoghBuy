@@ -5,7 +5,7 @@ import './index.css';
 function CartItem({ id, title, image, price, rating }) {
   return (
       <div className='checkout__item'>
-      <img className="checkout__image" src={image} />
+      <img className="checkout__image" src={`/images/${image}`} />
       <p>{title}</p>
       <p>{price}</p>
       <Flex direction="row">
