@@ -1,10 +1,10 @@
 import React from "react";
-import { QUERY_ME, QUERY_USER } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
-import {ADD_PRODUCT} from '../utils/mutations';
+import { QUERY_ME, QUERY_USER } from "../utils/queries";
 import { Redirect, useParams } from "react-router-dom";
+import {ADD_PRODUCT} from '../utils/mutations';
 import auth from '../utils/auth';
-import { Container } from "@chakra-ui/react";
+import { Container, Flex, HStack } from "@chakra-ui/react";
 
 const Profile = () => {
     const {username: userParam} = useParams();
@@ -16,7 +16,7 @@ const Profile = () => {
 
     if (auth.loggedIn() && auth.getProfile().data.username === userParam) {
         return <Redirect to="/profile" />
-    }
+    } 
     if (loading) {
         return <div>Loading...</div>
     }
@@ -39,11 +39,22 @@ const Profile = () => {
     };
 
     return(
-        <>
-            <Container>
-                <h4>hello</h4>
+        <div>
+            <Container maxW="container.md">
+                <div>
+                <HStack>
+                   <Flex>
+                     Hello
+                   </Flex>
+                </HStack>
+                <HStack>
+                   <Flex>
+                       
+                   </Flex>
+                </HStack>
+                </div>
             </Container>
-        </>
+        </div>
     )
 };
 

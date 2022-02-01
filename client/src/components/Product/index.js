@@ -2,16 +2,11 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCT } from "../../utils/queries";
 import { Button, Box, Image, Heading, Text, Flex } from "@chakra-ui/react";
-
-const Product = (item) => {
-	const { title, price, image, description } = item;
-	console.log(item);
-
 import "../../assets/stylesheets/Product.css";
 import { useStateValue } from "../../StateProvider";
   
   const Product = (item) => {
-	const { title, price, image, description } = item;
+	const { id, title, price, image, description } = item;
 	console.log(item);
 
 	const [{ cart }, dispatch] = useStateValue();
@@ -27,7 +22,6 @@ import { useStateValue } from "../../StateProvider";
 			title: title,
 			image: image,
 			price: price,
-			rating: rating,
 		  },
 		});
 	  };
@@ -44,7 +38,7 @@ import { useStateValue } from "../../StateProvider";
 				alt="Art image"
 			/>
 			<Text>{description}</Text>
-			<Button colorScheme="blue">Add to Cart</Button>
+			<Button colorScheme="blue" onClick={addToCart}>Add to Cart</Button>
 		</Box>
 	);
 };
