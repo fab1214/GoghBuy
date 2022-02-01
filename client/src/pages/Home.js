@@ -12,22 +12,22 @@ const Home = () => {
 	if (loading) return <div>Loading...</div>;
 
 	return (
-		<Container className="home">
-			<div className="home-container">
-				<Stack>
-					{users.map((users) => (
-						<Artist
-							key={users._id}
-							_id={users._id}
-							name={users.username}
-							bio={users.bio}
-							profilePic={users.profilePic}
-							products={users.products}
-						/>
-					))}
-				</Stack>
-			</div>
-		</Container>
+		// <Container className="home">
+		<div className="home-container">
+			{/* <Stack> */}
+			{users.map((users) => (
+				<Artist
+					key={users._id}
+					_id={users._id}
+					name={users.username}
+					bio={users.bio}
+					profilePic={users.profilePic}
+					products={users.products}
+				/>
+			))}
+			{/* </Stack> */}
+		</div>
+		// </Container>
 	);
 };
 

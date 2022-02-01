@@ -3,7 +3,17 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../../utils/queries";
 import Product from "../Product";
 
-import { Box, Image, Heading, Text, HStack, Button } from "@chakra-ui/react";
+import {
+	Box,
+	Image,
+	Heading,
+	Text,
+	HStack,
+	Button,
+	Flex,
+	Spacer,
+	Center,
+} from "@chakra-ui/react";
 import "../../assets/stylesheets/Artist.css";
 
 const Artist = (item) => {
@@ -19,30 +29,81 @@ const Artist = (item) => {
 	console.log(productData);
 
 	return (
-		// <HStack>
-		<Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
-			<Heading fontSize="x1">{name}</Heading>
-			<Image
-				borderRadius="full"
-				boxSize="150px"
-				className="artist-pfp"
-				src={`/images/${profilePic}`}
-				alt="Artist's Profile Picture"
-			/>
-			<Text>{bio}</Text>
+		<Box p={5} shadow="md" borderWidth="2px" flex="1" borderRadius="md">
+			<Flex direction="row" align="center">
+				<Box
+					p={5}
+					minW="md"
+					shadow="md"
+					borderWidth="1px"
+					flex="2"
+					borderRadius="md"
+				>
+					<Center>
+						<Heading fontSize="x1">{name}</Heading>
+					</Center>
+					<Center>
+						<Image
+							borderRadius="full"
+							boxSize="150px"
+							align="center"
+							className="artist-pfp"
+							src={`/images/${profilePic}`}
+							alt="Artist's Profile Picture"
+						/>
+					</Center>
+					<Center>
+						<Text>{bio}</Text>
+					</Center>
+				</Box>
 
-			{productData.map((products) => (
-				<Product
-					key={products._id}
-					id={products._id}
-					title={products.title}
-					price={products.price}
-					image={products.image}
-					description={products.description}
-				/>
-			))}
+				<Spacer />
+
+				<HStack>
+					{productData.map((products) => (
+						<Product
+							key={products._id}
+							id={products._id}
+							title={products.title}
+							price={products.price}
+							image={products.image}
+							description={products.description}
+						/>
+					))}
+				</HStack>
+			</Flex>
 		</Box>
-		// </HStack>
+
+		// <Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
+		// 	{/* <HStack> */}
+		// 	<Flex>
+		// 		<Box p={15} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
+		// 			<Heading fontSize="x1">{name}</Heading>
+		// 			<Image
+		// 				borderRadius="full"
+		// 				boxSize="150px"
+		// 				className="artist-pfp"
+		// 				src={`/images/${profilePic}`}
+		// 				alt="Artist's Profile Picture"
+		// 			/>
+		// 			<Text>{bio}</Text>
+		// 		</Box>
+		// 		<Spacer />
+		// 		<HStack spacing="24px">
+		// 			{productData.map((products) => (
+		// 				<Product
+		// 					key={products._id}
+		// 					id={products._id}
+		// 					title={products.title}
+		// 					price={products.price}
+		// 					image={products.image}
+		// 					description={products.description}
+		// 				/>
+		// 			))}
+		// 		</HStack>
+		// 	</Flex>
+		// 	{/* </HStack> */}
+		// </Box>
 	);
 };
 

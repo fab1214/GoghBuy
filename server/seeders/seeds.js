@@ -42,6 +42,37 @@ db.once("open", async () => {
 			price: 75,
 			quantity: 12,
 		},
+		{
+			title:
+				"Dream Caused by the Flight of a Bee around a Pomegranate a Second before Awakening",
+			description: "The title really says it all.",
+			image: "dream.jpg",
+			price: 1000,
+			quantity: 1,
+		},
+		{
+			title: "Che Guevara",
+			description:
+				"When an artist asks 'What if there were nine Che Guevaras, and what if they were all different colors?'",
+			image: "che-guevara.jpg",
+			price: 100,
+			quantity: 5,
+		},
+		{
+			title: "Big Campbell's Soup Can",
+			description: "When inspiration strikes... paint soup.",
+			image: "campbell.jpg",
+			price: 19,
+			quantity: 42,
+		},
+		{
+			title: "Marilyn Monroe",
+			description:
+				"I know what you're thinking, but this was like the original Marilyn Monroe painting.",
+			image: "marilyn-monroe.jpg",
+			price: 75,
+			quantity: 28,
+		},
 	]);
 
 	console.log("products seeded");
@@ -54,7 +85,7 @@ db.once("open", async () => {
 		{ name: "Portraits", products: [products[2], products[3]] },
 		{ name: "French", products: [products[4], products[5]] },
 		{ name: "Sports", products: [products[6], products[7]] },
-		{ name: "Random", products: [products[8], products[9]] },
+		{ name: "Random", products: [products[8]] },
 	]);
 
 	await User.deleteMany();
@@ -74,7 +105,16 @@ db.once("open", async () => {
 		password: "test12345",
 		profilePic: "salvador-dali.png",
 		bio: "Salvador Dali is a painter that happened to also have a pet ant eater.",
-		products: [products[3], products[4]],
+		products: [products[3], products[4], products[5]],
+	});
+
+	await User.create({
+		username: "Andy Warhol",
+		email: "warhol@gmail.com",
+		password: "test12345",
+		profilePic: "warhol.jpg",
+		bio: "Andy Warhol was a very influential artist, however he is primarily known for his role in Men in Black III",
+		products: [products[6], products[7], products[8]],
 	});
 
 	console.log("users seeded");

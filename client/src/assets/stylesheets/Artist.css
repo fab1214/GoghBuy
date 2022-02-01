@@ -19,6 +19,7 @@
 	width: 100%;
 	object-fit: contain;
 	margin-bottom: 15px;
+	align-items: center;
 }
 
 /* .artist-desc {} */
