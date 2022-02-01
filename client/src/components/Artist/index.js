@@ -8,11 +8,13 @@ import {
 	Image,
 	Heading,
 	Text,
+	Stack,
 	HStack,
 	Button,
 	Flex,
 	Spacer,
 	Center,
+	Container,
 } from "@chakra-ui/react";
 import "../../assets/stylesheets/Artist.css";
 
@@ -29,16 +31,24 @@ const Artist = (item) => {
 	console.log(productData);
 
 	return (
-		<Box p={5} shadow="md" borderWidth="2px" flex="1" borderRadius="md">
+		<Box
+			p={5}
+			shadow="md"
+			borderWidth="2px"
+			flex="1"
+			borderRadius="md"
+			bg="white"
+		>
 			<Flex direction="row" align="center">
-				<Box
+				{/* <Box
 					p={5}
 					minW="md"
 					shadow="md"
 					borderWidth="1px"
 					flex="2"
 					borderRadius="md"
-				>
+				> */}
+				<Container>
 					<Center>
 						<Heading fontSize="x1">{name}</Heading>
 					</Center>
@@ -55,7 +65,8 @@ const Artist = (item) => {
 					<Center>
 						<Text>{bio}</Text>
 					</Center>
-				</Box>
+				</Container>
+				{/* </Box> */}
 
 				<Spacer />
 

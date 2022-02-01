@@ -20,6 +20,7 @@ import Cart from "./pages/Cart/Cart.js";
 import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from "./reducer";
 import Profile from "./pages/Profile";
+import Footer from "./components/Footer";
 
 //establish new link to GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({
@@ -58,7 +59,6 @@ function App() {
 							className="home-banner"
 							src={"/images/polygonal19.jpg"}
 							alt="banner"
-							
 						/>
 						<div>
 							<Switch>
@@ -69,6 +69,7 @@ function App() {
 								<Route exact path="/profile/:username" component={Profile} />
 							</Switch>
 						</div>
+						<Footer />
 					</StateProvider>
 				</Router>
 			</ApolloProvider>
