@@ -7,7 +7,7 @@ function CartItem({ id, title, image, price, rating }) {
       <div className='checkout__item'>
       <img className="checkout__image" src={`/images/${image}`} />
       <p>{title}</p>
-      <p>{price}</p>
+      <p>${price}</p>
       <Flex direction="row">
         {Array(rating)
           .fill()
