@@ -12,7 +12,7 @@ import { useStateValue } from "../../StateProvider";
 
 	const [{ cart }, dispatch] = useStateValue();
 
-	console.log('This is the cart >>>', cart)
+	console.log("This is the cart >>>", cart);
 
 	const addToCart = () => {
 		// dispatch the item into the data layer
@@ -26,7 +26,7 @@ import { useStateValue } from "../../StateProvider";
 			// rating: rating,
 		  },
 		});
-	  };
+	};
 
 	return (
 		<Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
