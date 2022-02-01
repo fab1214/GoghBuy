@@ -31,7 +31,7 @@ const userSchema = new Schema({
 		required: false,
 	},
 	products: [Product.schema],
-	orders: [Order.schema],
+	order: [Order.schema],
 });
 
 // aet up pre-save middleware to create password

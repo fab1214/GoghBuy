@@ -16,9 +16,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
-import Cart from './pages/Cart/Cart.js';
-import  { StateProvider } from './StateProvider';
-import reducer, { initialState } from './reducer';
+import Cart from "./pages/Cart/Cart.js";
+import { StateProvider } from "./StateProvider";
+import reducer, { initialState } from "./reducer";
 import Profile from "./pages/Profile";
 
 //establish new link to GraphQL server at its /graphql endpoint
@@ -48,26 +48,32 @@ const client = new ApolloClient({
 });
 
 function App() {
-  return (
-    <ChakraProvider>
-      <ApolloProvider client={client}>
-        <Router>
-        <StateProvider initialState={initialState} reducer={reducer}>
-          <Navbar />
-          <div>
-            <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path='/cart' component={Cart} />
-            <Route exact path='/profile/:username' component={Profile} />
-            </Switch>
-          </div>
-          </StateProvider>
-        </Router>
-      </ApolloProvider>
-    </ChakraProvider>
-  );
+	return (
+		<ChakraProvider>
+			<ApolloProvider client={client}>
+				<Router>
+					<StateProvider initialState={initialState} reducer={reducer}>
+						<Navbar />
+						<img
+							className="home-banner"
+							src={"/images/polygonal19.jpg"}
+							alt="banner"
+							
+						/>
+						<div>
+							<Switch>
+								<Route exact path="/" component={Home} />
+								<Route exact path="/login" component={Login} />
+								<Route exact path="/signup" component={SignUp} />
+								<Route exact path="/cart" component={Cart} />
+								<Route exact path="/profile/:username" component={Profile} />
+							</Switch>
+						</div>
+					</StateProvider>
+				</Router>
+			</ApolloProvider>
+		</ChakraProvider>
+	);
 }
 
 export default App;
