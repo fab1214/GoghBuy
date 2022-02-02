@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useStateValue } from "../../StateProvider";
 
 
-const pages = ['Products', 'Profile', 'Blog'];
+const pages = ['Products', 'Profile'];
 const pages2 = ['Login', 'SignUp']
 
 function Navbar() {
