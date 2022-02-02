@@ -42,6 +42,7 @@ const SocialButton = ({ children, label, href }) => {
 };
 
 const Footer = () => {
+<<<<<<< HEAD
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
@@ -82,6 +83,48 @@ const Footer = () => {
       </Container>
     </Box>
   );
+=======
+	return (
+		<Box
+			bg={useColorModeValue("gray.50", "gray.900")}
+			color={useColorModeValue("gray.700", "gray.200")}
+			position="sticky"
+			mt="700px"
+		>
+			<Container
+				as={Stack}
+				maxW={"6xl"}
+				py={4}
+				direction={{ base: "column", md: "row" }}
+				spacing={4}
+				justify={{ base: "center", md: "space-between" }}
+				align={{ base: "center", md: "center" }}
+			>
+				<Text>© 2022 goghbuy. All rights reserved</Text>
+				<Stack direction={"row"} spacing={6}>
+					<SocialButton label={"Twitter"} href={"https://twitter.com/"}>
+						<FaTwitter />
+					</SocialButton>
+					<SocialButton label={"YouTube"} href={"https://youtube.com"}>
+						<FaYoutube />
+					</SocialButton>
+					<SocialButton label={"Instagram"} href={"https://instagram.com"}>
+						<FaInstagram />
+					</SocialButton>
+					<SocialButton label={"Facebook"} href={"https://facebook.com"}>
+						<FaFacebook />
+					</SocialButton>
+					<SocialButton
+						label={"GitHub"}
+						href={"https://github.com/fab1214/goghbuy"}
+					>
+						<FaGithub />
+					</SocialButton>
+				</Stack>
+			</Container>
+		</Box>
+	);
+>>>>>>> 9cffad2a535df1ff4efc061275e86b813dd71472
 };
 
 export default Footer;
