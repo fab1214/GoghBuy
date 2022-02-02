@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useStateValue } from "../../StateProvider";
 import "./style.css";
 const pages = ['Products', 'Profile'];
-const pages2 = ['Login', 'Sign Up']
+const pages2 = ['Login', 'SignUp']
 
 function Navbar() {
     const classes = useStyles();

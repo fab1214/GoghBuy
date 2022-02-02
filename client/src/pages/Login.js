@@ -56,7 +56,7 @@ function Login() {
 
   return (
     <Flex  direction ='column' align='center'>
-    <Box w="30%" borderWidth="1px" borderRadius="lg" my="10%" p={4}>
+    <Box w="30%" borderWidth="1px" borderRadius="lg" my="10%" p={4} bg='white'>
         <form onSubmit={signIn}>
             <Text fontSize='3xl' align='center'>Sign In</Text>
           <Stack spacing={3}>
