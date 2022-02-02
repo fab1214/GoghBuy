@@ -17,12 +17,9 @@ import "../../assets/stylesheets/Product.css";
 import { useStateValue } from "../../StateProvider";
 
 const Product = (item) => {
-	const { id, title, price, image, description } = item;
-	console.log(item);
+	const { id, title, price, image, description, rating } = item;
 
 	const [{ cart }, dispatch] = useStateValue();
-
-	console.log("This is the cart >>>", cart);
 
 	const addToCart = () => {
 		// dispatch the item into the data layer
@@ -33,7 +30,7 @@ const Product = (item) => {
 				title: title,
 				image: image,
 				price: price,
-				// rating: rating,
+				rating: rating,
 			},
 		});
 	};
@@ -42,7 +39,7 @@ const Product = (item) => {
 		<Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
 			<Container>
 				<Center>
-					<Heading as="h3" size="lg">
+					<Heading as="h3" size="lg" isTruncated>
 						{title}
 					</Heading>
 				</Center>
@@ -60,7 +57,7 @@ const Product = (item) => {
 				<Flex>
 					<Text>${price}</Text>
 					<Spacer />
-					<Button size="sm" colorScheme="blue" onClick={addToCart}>
+					<Button size="sm" colorScheme="orange" onClick={addToCart}>
 						Add to Cart
 					</Button>
 				</Flex>

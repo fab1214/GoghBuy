@@ -16,6 +16,7 @@ export const QUERY_ME = gql`
         image
         price
         quantity
+        rating
       }
       order {
         _id
@@ -27,6 +28,7 @@ export const QUERY_ME = gql`
           image
           price
           quantity
+          rating
         }
       }
     }
@@ -48,6 +50,7 @@ export const QUERY_USERS = gql`
 				image
 				price
 				quantity
+        rating
 			}
 		}
 	}
@@ -66,6 +69,7 @@ query user($username: String!) {
         image
         price
         quantity
+        rating
       }
     }
   }
@@ -80,6 +84,7 @@ export const QUERY_PRODUCTS = gql`
 			image
 			price
 			quantity
+      rating
 		}
 	}
 `;
@@ -93,6 +98,7 @@ export const QUERY_PRODUCT = gql`
 			image
 			price
 			quantity
+      rating
 		}
 	}
 `;
@@ -108,6 +114,7 @@ query {
         image
         price
         quantity
+        rating
       }
     }
   }

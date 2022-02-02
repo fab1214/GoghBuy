@@ -11,6 +11,7 @@ db.once("open", async () => {
 			image: "starry-night.png",
 			price: 25,
 			quantity: 10,
+			rating: 4
 		},
 		{
 			title: "Skeleton Smoking",
@@ -18,6 +19,7 @@ db.once("open", async () => {
 			image: "skeleton-smoking.jpg",
 			price: 500,
 			quantity: 2,
+			rating: 3
 		},
 		{
 			title: "Cottage Garden",
@@ -26,6 +28,7 @@ db.once("open", async () => {
 			image: "cottage-garden.png",
 			price: 15,
 			quantity: 30,
+			rating: 4
 		},
 		{
 			title: "The Disintegration of the Persistence of Memory",
@@ -33,6 +36,7 @@ db.once("open", async () => {
 			image: "disintegration.jpg",
 			price: 69,
 			quantity: 14,
+			rating: 5
 		},
 		{
 			title: "The Persistence of Memory",
@@ -41,6 +45,7 @@ db.once("open", async () => {
 			image: "memory.jpg",
 			price: 75,
 			quantity: 12,
+			rating: 5
 		},
 		{
 			title:
@@ -49,6 +54,7 @@ db.once("open", async () => {
 			image: "dream.jpg",
 			price: 1000,
 			quantity: 1,
+			rating: 3
 		},
 		{
 			title: "Che Guevara",
@@ -57,6 +63,7 @@ db.once("open", async () => {
 			image: "che-guevara.jpg",
 			price: 100,
 			quantity: 5,
+			rating: 2
 		},
 		{
 			title: "Big Campbell's Soup Can",
@@ -64,6 +71,7 @@ db.once("open", async () => {
 			image: "campbell.jpg",
 			price: 19,
 			quantity: 42,
+			rating: 2
 		},
 		{
 			title: "Marilyn Monroe",
@@ -72,6 +80,7 @@ db.once("open", async () => {
 			image: "marilyn-monroe.jpg",
 			price: 75,
 			quantity: 28,
+			rating: 5
 		},
 	]);
 

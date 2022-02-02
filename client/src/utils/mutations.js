@@ -33,6 +33,7 @@ mutation addProduct($productData: ProductInput!) {
       image
       price
       quantity
+      rating
     }
   }
 `;

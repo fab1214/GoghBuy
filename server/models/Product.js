@@ -27,6 +27,11 @@ const productSchema = new Schema({
 		required: true,
 		min: 0,
 		default: 0,
+	},
+	rating: {
+		type: Number,
+		required: true,
+		min: 1,
 	}
 });
 
