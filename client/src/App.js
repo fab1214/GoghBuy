@@ -21,6 +21,7 @@ import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from "./reducer";
 import Profile from "./pages/Profile";
 import Footer from "./components/Footer";
+import Success from "./pages/Success";
 
 //establish new link to GraphQL server at its /graphql endpoint
 const httpLink = createHttpLink({
@@ -67,6 +68,7 @@ function App() {
 								<Route exact path="/signup" component={SignUp} />
 								<Route exact path="/cart" component={Cart} />
 								<Route exact path="/profile/:username" component={Profile} />
+								<Route exact path="/success" component={Success} />
 							</Switch>
 						</div>
 						<Footer />

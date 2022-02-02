@@ -20,6 +20,7 @@ const typeDefs = gql`
 		image: String
 		price: Float
 		quantity: Int
+		rating: Int
 	}
 
 	input ProductInput {
@@ -29,6 +30,7 @@ const typeDefs = gql`
 		image: String
 		price: Float
 		quantity: Int
+		rating: Int
 	}
 
 	type Order {
