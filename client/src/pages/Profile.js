@@ -4,7 +4,7 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 import { Redirect, useParams } from "react-router-dom";
 import { ADD_PRODUCT } from '../utils/mutations';
 import auth from '../utils/auth';
-import { Box, Container, Image, Flex, HStack, Center } from "@chakra-ui/react";
+import { Box, Image, Flex, HStack, Center } from "@chakra-ui/react";
 
 const Profile = () => {
     const { username: userParam } = useParams();
@@ -42,46 +42,50 @@ const Profile = () => {
     return (
         <div style={{ marginTop: "500" }}>
             <div className="flex-row">
-                <h2 className="bg-dark text-secondary p-3 display-inline-block">
+                <h2 style={{ textAlign: "center", fontSize: "30px" }}>
                     Viewing {userParam ? `${user.username}'s` : 'your'} profile.
                 </h2>
             </div>
-            <Container maxW="container.md">
-                <Center>
-
-                    <div className="container">
-                        <Flex direction="row">
-                            <img 
+            <Flex w="full" justifyContent="center">
+                <Box>
+                    <Center>
+                        <img
+                            style={{}}
                             src={`/images/` + user.profilePic}
                             alt=""
                             boxSize="100px"
-                            />
-                            <p>{user.bio}</p>
-                            <div>{user.products.description}</div>
-                            {user.products.map(product => {
-                                return (
-                                    <>
-                                    <h2>{product.title}</h2>
-                                        <Image
-                                            src={`/images/${product.image}`}
-                                            alt=""
-                                            boxSize="150px"
-                                            align="center"
-                                            borderRadius="full"
-                                        />
-                                    </>
-                                    
-                                )
-                            })}
+                        />
+                        <p>{user.bio}</p>
+                    </Center>
+
+                    <h4 style={{ textAlign: "center", fontSize: "25px" }}>Your Products...</h4>
+                    <Flex direction="row">
+                        {user.products.map(product => {
+                            return (
+                                <>
+                                    <h2 style={{fontWeight: "bold"}}>{product.title}</h2>
+                                    <Image
+                                        src={`/images/${product.image}`}
+                                        key={product._id}
+                                        alt=""
+                                        boxSize="150px"
+                                        align="center"
+                                        borderRadius="full"
+                                    />
+                                  <div>{product.description}</div>
+                                </>
+                            )
+                        })}
+                    </Flex>
+                    
+                    <h4 style={{ textAlign: "center", fontSize: "25px" }}>Your Orders...</h4>
+                    <HStack>
+                        <Flex>
+                            {user.order}
                         </Flex>
-                        <HStack>
-                            <Flex>
-                                {user.order}
-                            </Flex>
-                        </HStack>
-                    </div>
-                </Center>
-            </Container>
+                    </HStack>
+                </Box>
+            </Flex>
         </div>
     )
 };
