@@ -5,9 +5,9 @@ import { AppBar, Toolbar, IconButton, Badge, Box, Typography } from '@material-u
 import { ShoppingCart } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { useStateValue } from "../../StateProvider";
-
+import "./style.css";
 const pages = ['Products', 'Profile'];
-const pages2 = ['Login', 'SignUp']
+const pages2 = ['Login', 'Sign Up']
 
 function Navbar() {
     const classes = useStyles();
@@ -58,7 +58,7 @@ function Navbar() {
                     <Typography variant="h6" className={classes.title} color="inherit">
                         <img src={1} alt="" className={classes.image} />
                         <Link to="/">
-                            goughbuy
+                            <span className='font-link'>goghbuy</span>
                         </Link>
                     </Typography>
                     {showNavigation()}

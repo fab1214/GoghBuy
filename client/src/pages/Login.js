@@ -52,7 +52,6 @@ function Login() {
       email: "",
       password: "",
     });
-    console.log(formState);
   };
 
   return (

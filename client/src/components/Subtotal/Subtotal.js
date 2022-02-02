@@ -27,16 +27,12 @@ function Subtotal() {
 
   function submitCheckout() {
     const productIds = [];
-console.log(cart);
     //for each item in cart
     cart.forEach((item) => {
       //loop through items in cart and push ids into productIds array
       // for (let i = 0; i < item.purchaseQuantity; i++) {
         productIds.push(item.id);
       // }
-
-      console.log('this is your cart', cart);
-      console.log(item.id);
 
     });
 
