@@ -1,7 +1,8 @@
 const { User, Product, Category, Order } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
-const stripe = require('stripe')('sk_test_51KO8uWLlANIZYHfV2fCxt2DP4rbsv7yMCEZD4wvihkfVIab3orWCVPHURchHQwUGaj488Xm2kuOWZakc2kg7OMYS00t8CDfrjV');
+require('dotenv').config({ path: './.env' });
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const resolvers = {
 	Query: {
@@ -62,8 +63,6 @@ const resolvers = {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ products: args.products });
       const line_items = [];
-
-	  console.log(order);
 	  
       const { products } = await order.populate("products");
 

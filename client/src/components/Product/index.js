@@ -57,7 +57,7 @@ const Product = (item) => {
         <Flex>
           <Text>${price}</Text>
           <Spacer />
-          <Button size="sm" colorScheme="blue" onClick={addToCart}>
+          <Button size="sm" colorScheme="orange" onClick={addToCart}>
             Add to Cart
           </Button>
         </Flex>

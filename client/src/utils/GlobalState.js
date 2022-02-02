@@ -13,7 +13,6 @@ const StoreProvider = ({value = [], ...props}) => { //props used to be passed to
         // categories: [],
         // currentCategory: ''
     });
-    console.log(state);
     return <Provider value={[state, dispatch]}{...props} />;
 };
 

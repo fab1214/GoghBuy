@@ -4,9 +4,9 @@ import { Heading, Box } from "@chakra-ui/react";
 
 function Success() {
 
-// setTimeout(() => {
-//     window.location.assign('/');
-// }, 3000);
+setTimeout(() => {
+    window.location.assign('/');
+}, 3000);
 
   return (
   <div>

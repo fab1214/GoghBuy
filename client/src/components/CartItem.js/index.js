@@ -1,10 +1,21 @@
 import React from "react";
-import { Flex, Box } from "@chakra-ui/react";
-import './index.css';
+import { Flex, Box, Button } from "@chakra-ui/react";
+import { useStateValue } from "../../StateProvider";
 
-function CartItem({ id, title, image, price, rating }) {
+import "./index.css";
+
+function CartItem({ _id, title, image, price, rating }) {
+
+  const [{ cart }, dispatch] = useStateValue();
+
+  const removeFromCart = () => {
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      id: _id,
+    });
+  };
   return (
-      <div className='checkout__item'>
+    <div className="checkout__item">
       <img className="checkout__image" src={`/images/${image}`} />
       <p>{title}</p>
       <p>${price}</p>
@@ -15,7 +26,12 @@ function CartItem({ id, title, image, price, rating }) {
             <p>⭐</p>
           ))}
       </Flex> */}
-      </div>
+      {cart.length > 0 ? (
+        <Button size="sm" colorScheme="blue"  mb='5%' onClick={removeFromCart}>
+          Remove from Cart
+        </Button>
+      ) : null}
+    </div>
   );
 }
 

@@ -8,7 +8,7 @@ import { useStateValue } from "../../StateProvider";
 
 
 const pages = ['Products', 'Profile', 'Blog', 'Logout'];
-const pages2 = ['Login', 'SignUp']
+const pages2 = ['Login', 'Sign Up']
 
 function Navbar() {
     const classes = useStyles();

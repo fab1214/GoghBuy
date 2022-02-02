@@ -10,28 +10,34 @@ function Cart() {
 
   return (
     <div>
-      <Heading align="center" borderBottom="1px" borderColor="gray.200" pb='30px' color='black'>
+      <Heading
+        align="center"
+        borderBottom="1px"
+        borderColor="gray.200"
+        pb="30px"
+        color="black"
+      >
         Your Shopping Cart
       </Heading>
       <Box bg="gray.50" overflow="hidden">
         <div className="container">
-        {/* map through cart to pull out individual items and their properties */}
-        <div className="cart">
-          {cart.map((item) => (
-            <CartItem
-              id={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              rating={item.rating}
+          {/* map through cart to pull out individual items and their properties */}
+          <div className="cart">
+            {cart.map((item) => (
+              <CartItem
+                id={item._id}
+                title={item.title}
+                image={item.image}
+                price={item.price}
+                rating={item.rating}
             />
-          ))}
-        </div>
-        <div className='sticky'>
-          <div className='subtotal'>
-            <Subtotal />
+            ))}
+          </div>
+          <div className="sticky">
+            <div className="subtotal">
+              <Subtotal />
             </div>
-        </div>
+          </div>
         </div>
       </Box>
     </div>
