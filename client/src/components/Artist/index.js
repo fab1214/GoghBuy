@@ -15,6 +15,8 @@ import {
 	Spacer,
 	Center,
 	Container,
+	SimpleGrid,
+	Icon,
 } from "@chakra-ui/react";
 import "../../assets/stylesheets/Artist.css";
 
@@ -28,78 +30,86 @@ const Artist = (item) => {
 	if (loading) return <div>Loading...</div>;
 
 	const productData = data?.user.products || {};
+	console.log(productData);
 
 	return (
-		<Box
-			p={5}
-			shadow="md"
-			borderWidth="2px"
-			flex="1"
-			borderRadius="md"
-			bg="white"
-		>
-			<Flex direction="row" align="center">
-				{/* <Box
-					p={5}
-					minW="md"
-					shadow="md"
-					borderWidth="1px"
-					flex="2"
-					borderRadius="md"
-				> */}
-				<Container>
-					<Center>
-						<Heading fontSize="x1">{name}</Heading>
-					</Center>
-					<Center>
+		<Flex p={25} w="full" alignItems="center" justifyContent="center">
+			<Box
+				d="flex"
+				p={20}
+				shadow="lg"
+				borderWidth="3px"
+				borderRadius="md"
+				bg="white"
+			>
+				<Center w="300px">
+					<Container>
+						<Center fontSize="4xl" fontWeight="bold">
+							{name}
+						</Center>
 						<Image
 							borderRadius="full"
 							boxSize="150px"
-							align="center"
 							className="artist-pfp"
 							src={`/images/${profilePic}`}
-							alt="Artist's Profile Picture"
+							alt="Artist Profile Picture"
 						/>
-					</Center>
-					<Center>
 						<Text>{bio}</Text>
-					</Center>
-				</Container>
-				{/* </Box> */}
+					</Container>
+				</Center>
+				{productData.map((products) => (
+					<Product
+						key={products._id}
+						id={products._id}
+						title={products.title}
+						price={products.price}
+						image={products.image}
+						description={products.description}
+					/>
+				))}
+			</Box>
+		</Flex>
 
-				<Spacer />
+		// <Box
+		// 	p={5}
+		// 	shadow="md"
+		// 	borderWidth="2px"
+		// 	flex="1"
+		// 	borderRadius="md"
+		// 	bg="white"
+		// >
+		// 	<Flex direction="row" align="center">
+		// 		{/* <Box
+		// 			p={5}
+		// 			minW="md"
+		// 			shadow="md"
+		// 			borderWidth="1px"
+		// 			flex="2"
+		// 			borderRadius="md"
+		// 		> */}
+		// 		<Container>
+		// 			<Center>
+		// 				<Heading fontSize="x1">{name}</Heading>
+		// 			</Center>
+		// 			<Center>
+		// 				<Image
+		// 					borderRadius="full"
+		// 					boxSize="150px"
+		// 					align="center"
+		// 					className="artist-pfp"
+		// 					src={`/images/${profilePic}`}
+		// 					alt="Artist's Profile Picture"
+		// 				/>
+		// 			</Center>
+		// 			<Center>
+		// 				<Text>{bio}</Text>
+		// 			</Center>
+		// 		</Container>
+		// 		{/* </Box> */}
 
-				<HStack>
-					{productData.map((products) => (
-						<Product
-							key={products._id}
-							id={products._id}
-							title={products.title}
-							price={products.price}
-							image={products.image}
-							description={products.description}
-						/>
-					))}
-				</HStack>
-			</Flex>
-		</Box>
-
-		// <Box p={5} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
-		// 	{/* <HStack> */}
-		// 	<Flex>
-		// 		<Box p={15} shadow="md" borderWidth="1px" flex="1" borderRadius="md">
-		// 			<Heading fontSize="x1">{name}</Heading>
-		// 			<Image
-		// 				borderRadius="full"
-		// 				boxSize="150px"
-		// 				className="artist-pfp"
-		// 				src={`/images/${profilePic}`}
-		// 				alt="Artist's Profile Picture"
-		// 			/>
-		// 			<Text>{bio}</Text>
-		// 		</Box>
 		// 		<Spacer />
-		// 		<HStack spacing="24px">
+
+		// 		<HStack>
 		// 			{productData.map((products) => (
 		// 				<Product
 		// 					key={products._id}
@@ -112,7 +122,6 @@ const Artist = (item) => {
 		// 			))}
 		// 		</HStack>
 		// 	</Flex>
-		// 	{/* </HStack> */}
 		// </Box>
 	);
 };

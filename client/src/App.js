@@ -1,6 +1,6 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Flex, Spacer, Box } from "@chakra-ui/react";
+import { Flex, Spacer, Box, Image } from "@chakra-ui/react";
 import "./assets/stylesheets/Home.css";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -56,9 +56,15 @@ function App() {
 				<Router>
 					<StateProvider initialState={initialState} reducer={reducer}>
 						<Navbar />
-						<img
-							className="home-banner"
+						<Image
+							// className="home-banner"
+							bgGradient="linear(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))"
+							bgClip="text"
+							mb="-300px"
+							w="100%"
+							zIndex={-1}
 							src={"/images/polygonal19.jpg"}
+							// src={"/images/paint-splatter.jpg"}
 							alt="banner"
 						/>
 						<div>
