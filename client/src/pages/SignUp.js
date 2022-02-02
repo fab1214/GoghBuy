@@ -54,7 +54,7 @@ function SignUp() {
 
   return (
     <Flex  direction ='column' align='center'>
-        <Box w="30%" borderWidth="1px" borderRadius="lg" my="10%" p={4}>
+        <Box w="30%" borderWidth="1px" borderRadius="lg" my="10%" p={4} bg='white'>
           <form onSubmit={register}>
               <Text fontSize='3xl' align='center'>Register</Text>
             <Stack spacing={3}>
