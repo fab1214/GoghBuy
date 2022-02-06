@@ -30,7 +30,6 @@ const Artist = (item) => {
 	if (loading) return <div>Loading...</div>;
 
 	const productData = data?.user.products || {};
-	console.log(productData);
 
 	return (
 		<Flex p={25} w="full" alignItems="center" justifyContent="center">

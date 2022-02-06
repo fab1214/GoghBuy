@@ -90,8 +90,8 @@ export const QUERY_PRODUCTS = gql`
 `;
 
 export const QUERY_PRODUCT = gql`
-	query product($id: ID!) {
-		product(_id: $id) {
+	query product($_id: ID!) {
+		product(_id: $_id) {
 			_id
 			title
 			description

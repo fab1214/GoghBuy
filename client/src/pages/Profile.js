@@ -32,7 +32,7 @@ const Profile = () => {
     const handleClick = async () => {
         try {
             await addProduct({
-                variables: { id: user._id }
+                variables: { _id: user._id }
             });
         } catch (e) {
             console.error(e);
