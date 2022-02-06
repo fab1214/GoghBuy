@@ -59,7 +59,7 @@ const Artist = (item) => {
 				{productData.map((products) => (
 					<Product
 						key={products._id}
-						id={products._id}
+						_id={products._id}
 						title={products.title}
 						price={products.price}
 						image={products.image}
@@ -68,60 +68,6 @@ const Artist = (item) => {
 				))}
 			</Box>
 		</Flex>
-
-		// <Box
-		// 	p={5}
-		// 	shadow="md"
-		// 	borderWidth="2px"
-		// 	flex="1"
-		// 	borderRadius="md"
-		// 	bg="white"
-		// >
-		// 	<Flex direction="row" align="center">
-		// 		{/* <Box
-		// 			p={5}
-		// 			minW="md"
-		// 			shadow="md"
-		// 			borderWidth="1px"
-		// 			flex="2"
-		// 			borderRadius="md"
-		// 		> */}
-		// 		<Container>
-		// 			<Center>
-		// 				<Heading fontSize="x1">{name}</Heading>
-		// 			</Center>
-		// 			<Center>
-		// 				<Image
-		// 					borderRadius="full"
-		// 					boxSize="150px"
-		// 					align="center"
-		// 					className="artist-pfp"
-		// 					src={`/images/${profilePic}`}
-		// 					alt="Artist's Profile Picture"
-		// 				/>
-		// 			</Center>
-		// 			<Center>
-		// 				<Text>{bio}</Text>
-		// 			</Center>
-		// 		</Container>
-		// 		{/* </Box> */}
-
-		// 		<Spacer />
-
-		// 		<HStack>
-		// 			{productData.map((products) => (
-		// 				<Product
-		// 					key={products._id}
-		// 					id={products._id}
-		// 					title={products.title}
-		// 					price={products.price}
-		// 					image={products.image}
-		// 					description={products.description}
-		// 				/>
-		// 			))}
-		// 		</HStack>
-		// 	</Flex>
-		// </Box>
 	);
 };
 
