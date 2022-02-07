@@ -1,17 +1,21 @@
 import React from "react";
 import { Flex, Box, Button } from "@chakra-ui/react";
-import { useStateValue } from "../../StateProvider";
+// import { useStateValue } from "../../StateProvider";
+import { useStoreContext } from '../../utils/GlobalState';
+import { REMOVE_FROM_CART } from "../../utils/actions";
 
 import "./index.css";
 
-function CartItem({ _id, title, image, price, rating }) {
+function CartItem({ _id, title, image, price }) {
 
-  const [{ cart }, dispatch] = useStateValue();
-
+  // const [state, dispatch] = useStateValue();
+  const [, dispatch] = useStoreContext();
+  
   const removeFromCart = () => {
+    
     dispatch({
-      type: "REMOVE_FROM_CART",
-      id: _id,
+      type: REMOVE_FROM_CART,
+      _id: _id,
     });
   };
   return (
@@ -26,11 +30,9 @@ function CartItem({ _id, title, image, price, rating }) {
             <p>⭐</p>
           ))}
       </Flex> */}
-      {cart.length > 0 ? (
-        <Button size="sm" colorScheme="blue"  mb='5%' onClick={removeFromCart}>
+        <Button size="sm" colorScheme="blue"  mb='5%' onClick = {() => removeFromCart()}>
           Remove from Cart
         </Button>
-      ) : null}
     </div>
   );
 }

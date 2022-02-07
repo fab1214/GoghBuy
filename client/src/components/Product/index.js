@@ -14,23 +14,27 @@ import {
 } from "@chakra-ui/react";
 
 import "../../assets/stylesheets/Product.css";
-import { useStateValue } from "../../StateProvider";
+// import { useStateValue } from "../../StateProvider";
+import { useStoreContext } from "../../utils/GlobalState";
 
 const Product = (item) => {
-	const { id, title, price, image, description, rating } = item;
+	const { _id, title, price, image, description} = item;
 
-	const [{ cart }, dispatch] = useStateValue();
+	// const [state, dispatch] = useStateValue();
+	const [state, dispatch] = useStoreContext();
+
+	const {cart} = state;
 
 	const addToCart = () => {
 		// dispatch the item into the data layer
 		dispatch({
 			type: "ADD_TO_CART",
 			product: {
-				id: id,
-				title: title,
-				image: image,
-				price: price,
-				rating: rating,
+				_id: item._id,
+				title: item.title,
+				description: item.description,
+				image: item.image,
+				price: item.price,
 			},
 		});
 	};

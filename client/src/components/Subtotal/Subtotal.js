@@ -4,7 +4,8 @@ import CurrencyFormat from "react-currency-format";
 import { Link } from "react-router-dom";
 import { Button, Box, Flex, Heading } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
-import { useStateValue } from "../../StateProvider";
+// import { useStateValue } from "../../StateProvider";
+import { useStoreContext } from "../../utils/GlobalState";
 import { getCartTotal } from "../../reducer";
 import { QUERY_CHECKOUT } from "../../utils/queries";
 import { loadStripe } from "@stripe/stripe-js";
@@ -13,7 +14,8 @@ import { useLazyQuery } from "@apollo/client";
 const stripePromise = loadStripe('pk_test_51KO8uWLlANIZYHfV0zqFZMkd1yZTg1CuToOkWtyevMZ0G6rVysSwTCZCzb7m5EL2AlSWbdWrFsPQWGS1Ap55KSxM00pzpMpeKs');
 
 function Subtotal() {
-  const [{cart}, dispatch] = useStateValue();
+  // const [{cart}, dispatch] = useStateValue();
+  const [{cart}, dispatch] = useStoreContext();
 
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 

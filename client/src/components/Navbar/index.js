@@ -4,14 +4,16 @@ import useStyles from "./styles";
 import { AppBar, Toolbar, IconButton, Badge, Box, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { useStateValue } from "../../StateProvider";
+// import { useStateValue } from "../../StateProvider";
+import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
 const pages = ['Products', 'Profile'];
 const pages2 = ['Login', 'SignUp']
 
 function Navbar() {
     const classes = useStyles();
-    const [{ cart }, dispatch] = useStateValue();
+    // const [{ cart }, dispatch] = useStateValue();
+    const [{ cart }, dispatch] = useStoreContext();
 
     function showNavigation() {
         if (Auth.loggedIn()) {

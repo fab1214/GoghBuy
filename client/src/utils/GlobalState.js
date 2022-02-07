@@ -1,24 +1,22 @@
-import React, { createContext, useContext } from "react";
-import { useProductReducer } from './reducers';
+import React, {createContext, useContext} from 'react';
+import {useProductReducer} from './reducers';
 
 const StoreContext = createContext();
+
 const {Provider} = StoreContext;
 
-const StoreProvider = ({value = [], ...props}) => { //props used to be passed to all children
-    // creates the global state
+const StoreProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useProductReducer({
-        // products: [],
-        cart: []
-        // // cartOpen: false,
-        // categories: [],
-        // currentCategory: ''
+        cart: [],
     });
-    return <Provider value={[state, dispatch]}{...props} />;
+
+    //use this to confirm it works
+    console.log(state);
+    return <Provider value={[state, dispatch]} {...props} />
 };
 
-// custom react hook that gives access to (state, dispatch) from StoreProvider
 const useStoreContext = () => {
     return useContext(StoreContext);
 };
 
-export {StoreProvider, useStoreContext};
+export { StoreProvider, useStoreContext };
