@@ -15,39 +15,42 @@ function Navbar() {
 
     function showNavigation() {
         if (Auth.loggedIn()) {
+            const { data } = Auth.getProfile();
+            // const profile = data.username.replace(' ', '%20')
+
             return (
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'space-evenly' }}>
-                        {pages.map((page) => (
-                            <Link
-                                className={classes.link}
-                                to={"/" + page.toLowerCase()}
-                                key={page}
-                                sx={{ my: 2, color: 'white', display: 'flex' }}
-                            >
-                                {page}
-                            </Link>
-                        ))}
-                        <div>
-                            <a href="/" onClick={() => Auth.logout()}>
-                                Logout
-                            </a>
-                        </div>
-                    </Box>
+                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'space-evenly' }}>
+                    {pages.map((page) => (
+                        <Link
+                            className={classes.link}
+                            to={"/" + (page === 'Profile' ? page.toLowerCase() + "/" + data.username : page.toLowerCase())}
+                            key={page}
+                            sx={{ my: 2, color: 'white', display: 'flex' }}
+                        >
+                            {page}
+                        </Link>
+                    ))}
+                    <div>
+                        <a href="/" onClick={() => Auth.logout()}>
+                            Logout
+                        </a>
+                    </div>
+                </Box>
             )
         } else {
             return (
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'space-evenly' }}>
-                        {pages2.map((page) => (
-                            <Link
-                                className={classes.link}
-                                to={"/" + page.toLowerCase()}
-                                key={page}
-                                sx={{ my: 2, color: 'white', display: 'flex' }}
-                            >
-                                {page}
-                            </Link>
-                        ))}
-                    </Box>
+                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'space-evenly' }}>
+                    {pages2.map((page) => (
+                        <Link
+                            className={classes.link}
+                            to={"/" + page.toLowerCase()}
+                            key={page}
+                            sx={{ my: 2, color: 'white', display: 'flex' }}
+                        >
+                            {page}
+                        </Link>
+                    ))}
+                </Box>
             )
         }
     }

@@ -16,7 +16,7 @@ const Profile = () => {
     console.log(user)
 
     if (auth.loggedIn() && auth.getProfile().data.username === userParam) {
-        return <Redirect to="/profile:username" />
+        return <Redirect to={"/profile/"+auth.getProfile().data.username} />
     }
     if (loading) {
         return <div>Loading...</div>
@@ -77,7 +77,7 @@ const Profile = () => {
                             )
                         })}
                     </Flex>
-                    
+
                     <h4 style={{ textAlign: "center", fontSize: "25px" }}>Your Orders...</h4>
                     <HStack>
                         <Flex>

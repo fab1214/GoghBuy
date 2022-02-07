@@ -73,7 +73,7 @@ function App() {
 								<Route exact path="/login" component={Login} />
 								<Route exact path="/signup" component={SignUp} />
 								<Route exact path="/cart" component={Cart} />
-								<Route exact path="/profile/:username" component={Profile} />
+								<Route path="/profile/:username" component={Profile} />
 								<Route exact path="/success" component={Success} />
 							</Switch>
 						</div>
