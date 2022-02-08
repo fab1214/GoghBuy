@@ -75,20 +75,6 @@ query user($username: String!) {
   }
 `;
 
-export const QUERY_PRODUCTS = gql`
-	query products($username: String) {
-		products(username: $username) {
-			_id
-			title
-			description
-			image
-			price
-			quantity
-      rating
-		}
-	}
-`;
-
 export const QUERY_PRODUCT = gql`
 	query product($_id: ID!) {
 		product(_id: $_id) {
@@ -126,4 +112,18 @@ export const QUERY_CHECKOUT = gql`
       session
     }
   }
+`;
+
+export const QUERY_ALL_PRODUCTS = gql`
+query {
+	products {
+			_id
+			title
+			description
+			image
+			price
+			quantity
+      rating
+	}
+}
 `;

@@ -1,7 +1,7 @@
 import React from "react";
 import Subtotal from "../../components/Subtotal/Subtotal.js";
 import { Heading, Box } from "@chakra-ui/react";
-import CartItem from "../../components/CartItem.js/index.js";
+import CartItem from "../../components/CartItem.js";
 // import { useStateValue } from "../../StateProvider";
 import { useStoreContext } from "../../utils/GlobalState.js";
 import "./index.css";
@@ -25,11 +25,8 @@ function Cart() {
         <div className="container">
           {/* map through cart to pull out individual items and their properties */}
           <div className="cart">
-            {state.cart.map((item) => (
-              <CartItem
-              key={item._id}
-              {...item}
-            />
+            {state.cart.map((product) => (
+              <CartItem key={product._id} {...product} />
             ))}
           </div>
           <div className="sticky">

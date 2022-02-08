@@ -17,9 +17,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import Cart from "./pages/Cart/Cart.js";
-// import { StateProvider } from "./StateProvider";
 // import { StoreProvider } from "./utils/GlobalState";
-// import reducer, { initialState } from "./reducer";
 import Profile from "./pages/Profile";
 import Footer from "./components/Footer";
 import Success from "./pages/Success";
@@ -55,7 +53,6 @@ function App() {
 		<ChakraProvider>
 			<ApolloProvider client={client}>
 				<Router>
-					{/* <StateProvider initialState={initialState} reducer={reducer}> */}
 						<Navbar />
 						<Image
 							// className="home-banner"
@@ -79,7 +76,6 @@ function App() {
 							</Switch>
 						</div>
 						<Footer />
-					{/* </StateProvider> */}
 				</Router>
 			</ApolloProvider>
 		</ChakraProvider>

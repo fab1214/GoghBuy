@@ -1,33 +1,32 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-import { QUERY_USERS, QUERY_PRODUCT } from "../utils/queries";
-import Artist from "../components/Artist";
-import { Stack, HStack, Box, Container } from "@chakra-ui/react";
 import "../assets/stylesheets/Home.css";
-import { Link } from "react-router-dom";
+import { useQuery } from '@apollo/client';
+import {QUERY_ALL_PRODUCTS} from '../utils/queries';
+
+import Product from '../components/Product';
+import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
 
 const Home = () => {
-	const { loading, data } = useQuery(QUERY_USERS);
-	const users = data?.users || [];
-	if (loading) return <div>Loading...</div>;
+
+	const {loading, data} = useQuery(QUERY_ALL_PRODUCTS);
+
+	//assign product variable to product query
+	const products = data?.products || [];
+	console.log(products);
 
 	return (
-		// <Container className="home">
 		<div className="home-container">
-			{/* <Stack> */}
-			{users.map((users) => (
-				<Artist
-					key={users._id}
-					_id={users._id}
-					name={users.username}
-					bio={users.bio}
-					profilePic={users.profilePic}
-					products={users.products}
+			{products.map((product) => (
+				<Product
+				key={product._id}
+				_id={product._id}
+				title={product.title}
+				description={product.description}
+				price={product.price}
+				image={product.image}
 				/>
 			))}
-			{/* </Stack> */}
 		</div>
-		// </Container>
 	);
 };
 

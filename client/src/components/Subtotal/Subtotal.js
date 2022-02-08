@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import "./Subtotal.css";
 import CurrencyFormat from "react-currency-format";
-import { Link } from "react-router-dom";
-import { Button, Box, Flex, Heading } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
-// import { useStateValue } from "../../StateProvider";
 import { useStoreContext } from "../../utils/GlobalState";
-import { getCartTotal } from "../../reducer";
+import { getCartTotal } from "../../utils/reducers";
 import { QUERY_CHECKOUT } from "../../utils/queries";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLazyQuery } from "@apollo/client";
 
-const stripePromise = loadStripe('pk_test_51KO8uWLlANIZYHfV0zqFZMkd1yZTg1CuToOkWtyevMZ0G6rVysSwTCZCzb7m5EL2AlSWbdWrFsPQWGS1Ap55KSxM00pzpMpeKs');
+const stripePromise = loadStripe(
+  "pk_test_51KO8uWLlANIZYHfV0zqFZMkd1yZTg1CuToOkWtyevMZ0G6rVysSwTCZCzb7m5EL2AlSWbdWrFsPQWGS1Ap55KSxM00pzpMpeKs"
+);
 
 function Subtotal() {
   // const [{cart}, dispatch] = useStateValue();
-  const [{cart}, dispatch] = useStoreContext();
+  const [{ cart }, dispatch] = useStoreContext();
 
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
@@ -30,12 +30,11 @@ function Subtotal() {
   function submitCheckout() {
     const productIds = [];
     //for each item in cart
-    cart.forEach((item) => {
+    cart.forEach((products) => {
       //loop through items in cart and push ids into productIds array
       // for (let i = 0; i < item.purchaseQuantity; i++) {
-        productIds.push(item.id);
+      productIds.push(products.id);
       // }
-
     });
 
     getCheckout({
@@ -65,18 +64,18 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={"$"}
       />
-        <Button
-          colorScheme="orange"
-          size="sm"
-          type="submit"
-          mt={2}
-          onClick={submitCheckout}
-        >
-          Proceed to Payment
-          <div className="icon">
-            <ArrowRightIcon />
-          </div>
-        </Button>
+      <Button
+        colorScheme="orange"
+        size="sm"
+        type="submit"
+        mt={2}
+        onClick={submitCheckout}
+      >
+        Proceed to Payment
+        <div className="icon">
+          <ArrowRightIcon />
+        </div>
+      </Button>
       {/* </Box> */}
       {/* </Flex> */}
     </>
