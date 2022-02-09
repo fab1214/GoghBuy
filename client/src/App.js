@@ -54,7 +54,7 @@ function App() {
 			<ApolloProvider client={client}>
 				<Router>
 						<Navbar />
-						<Image
+						{/* <Image
 							// className="home-banner"
 							bgGradient="linear(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))"
 							bgClip="text"
@@ -64,7 +64,7 @@ function App() {
 							src={"/images/polygonal19.jpg"}
 							// src={"/images/paint-splatter.jpg"}
 							alt="banner"
-						/>
+						/> */}
 						<div>
 							<Switch>
 								<Route exact path="/" component={Home} />

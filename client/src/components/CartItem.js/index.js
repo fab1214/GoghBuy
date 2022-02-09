@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Button } from "@chakra-ui/react";
+import { Flex, Box, Button, Image, Heading } from "@chakra-ui/react";
 // import { useStateValue } from "../../StateProvider";
 import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_FROM_CART } from "../../utils/actions";
@@ -18,9 +18,16 @@ function CartItem({ _id, title, image, price }) {
   };
   return (
     <div className="checkout__item">
-      <img className="checkout__image" src={`/images/${image}`} />
-      <p>{title}</p>
-      <p>${price}</p>
+        <Heading as="h3" size="sm" mb='2%' w='80%'>
+          {title}: ${price}
+        </Heading>
+        <Image
+          boxSize="300px"
+          // objectFit="contain"
+          src={`/images/${image}`}
+          alt="Art image"
+          mb='4%'
+        />
       {/* <Flex direction="row">
         {Array(rating)
           .fill()

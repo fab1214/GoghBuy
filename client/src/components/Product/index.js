@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Image, Heading, Text } from "@chakra-ui/react";
-
+import { Button, Image, Heading, Text, Box } from "@chakra-ui/react";
 import "../../assets/stylesheets/Product.css";
 // import { useStateValue } from "../../StateProvider";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -28,22 +27,22 @@ const Product = (product) => {
   };
 
   return (
-    <div>
-      <Heading as="h3" size="md" isTruncated>
-        {title}
-      </Heading>
-      <Image
-        boxSize="200px"
-        objectFit="contain"
-        src={`/images/${image}`}
-        alt="Art image"
-      />
-      <Text>{description}</Text>
-      <Text>${price}</Text>
-      <Button size="sm" colorScheme="orange" onClick={addToCart}>
-        Add to Cart
-      </Button>
-    </div>
+      <div className='product__card'>
+        <Heading as="h3" size="sm" mb='2%' w='80%'>
+          {title}
+        </Heading>
+        <Image
+          boxSize="300px"
+        //   objectFit="contain"
+          src={`/images/${image}`}
+          alt="Art image"
+        />
+        <Text w='70%'>{description}</Text>
+        <Text size='sm'><b>Price: ${price}</b></Text>
+        <Button size="sm" colorScheme="orange" onClick={addToCart}>
+          Add to Cart
+        </Button>
+      </div>
   );
 };
 

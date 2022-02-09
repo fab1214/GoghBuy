@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/client';
 import {QUERY_ALL_PRODUCTS} from '../utils/queries';
 
 import Product from '../components/Product';
-import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
 
 const Home = () => {
 
@@ -15,7 +14,8 @@ const Home = () => {
 	console.log(products);
 
 	return (
-		<div className="home-container">
+		<div className="home_container">
+			<div className='row'>
 			{products.map((product) => (
 				<Product
 				key={product._id}
@@ -26,6 +26,7 @@ const Home = () => {
 				image={product.image}
 				/>
 			))}
+			</div>
 		</div>
 	);
 };
