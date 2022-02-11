@@ -1,93 +1,87 @@
 import React from "react";
+import { Redirect, useParams } from "react-router-dom";
+
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USER } from "../utils/queries";
-import { Redirect, useParams } from "react-router-dom";
-import { ADD_PRODUCT } from '../utils/mutations';
-import auth from '../utils/auth';
-import { Box, Image, Flex, HStack, Center } from "@chakra-ui/react";
+// import { ADD_PRODUCT } from '../utils/mutations';
+
+import Auth from "../utils/auth";
+
+import { Box, Image, Flex, HStack, Center, Button} from "@chakra-ui/react";
+import img from "../assets/img/default-avi.png";
 
 const Profile = () => {
-    const { username: userParam } = useParams();
-    const [addProduct] = useMutation(ADD_PRODUCT);
-    const { loading, data } = useQuery(userParam ? QUERY_ME : QUERY_USER, {
-        variables: { username: userParam }
-    });
-    const user = data?.me || data?.user || {};
-    console.log(user)
+  const { username: userParameter } = useParams();
+  // const [addProduct] = useMutation(ADD_PRODUCT);
+  const { loading, data } = useQuery(userParameter ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParameter },
+  });
 
-    if (auth.loggedIn() && auth.getProfile().data.username === userParam) {
-        return <Redirect to="/profile:username" />
-    }
-    if (loading) {
-        return <div>Loading...</div>
-    }
-    if (!user?.username) {
-        return (
-            <h4 style={{ marginTop: "100px" }}>
-                You need to be logged in to see this page. Use the navigation above to signup/login.
-            </h4>
-        );
-    }
+  //if we run QUERY_ME, response = data.me, if we run QUERY_USER, response = data.user
+  const user = data?.me || data?.user || {};
+  console.log(user);
 
-    const handleClick = async () => {
-        try {
-            await addProduct({
-                variables: { _id: user._id }
-            });
-        } catch (e) {
-            console.error(e);
-        }
-    };
+  if (!Auth.loggedIn()) {
+    return <h4>Please register or login to browse profiles.</h4>;
+  }
 
-    return (
-        <div style={{ marginTop: "500" }}>
-            <div className="flex-row">
-                <h2 style={{ textAlign: "center", fontSize: "30px" }}>
-                    Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-                </h2>
-            </div>
-            <Flex w="full" justifyContent="center">
-                <Box>
-                    <Center>
-                        <img
-                            style={{}}
-                            src={`/images/` + user.profilePic}
-                            alt=""
-                            boxSize="100px"
-                        />
-                        <p>{user.bio}</p>
-                    </Center>
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParameter) {
+    return <Redirect to="/profile" />;
+  }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (!user.username) {
+    return <h4>This username doesn't exist!</h4>;
+  }
 
-                    <h4 style={{ textAlign: "center", fontSize: "25px" }}>Your Products...</h4>
-                    <Flex direction="row">
-                        {user.products.map(product => {
-                            return (
-                                <>
-                                    <h2 style={{fontWeight: "bold"}}>{product.title}</h2>
-                                    <Image
-                                        src={`/images/${product.image}`}
-                                        key={product._id}
-                                        alt=""
-                                        boxSize="150px"
-                                        align="center"
-                                        borderRadius="full"
-                                    />
-                                  <div>{product.description}</div>
-                                </>
-                            )
-                        })}
-                    </Flex>
-                    
-                    <h4 style={{ textAlign: "center", fontSize: "25px" }}>Your Orders...</h4>
-                    <HStack>
-                        <Flex>
-                            {user.order}
-                        </Flex>
-                    </HStack>
-                </Box>
-            </Flex>
-        </div>
-    )
+  // const handleClick = async () => {
+  //     try {
+  //         await addProduct({
+  //             variables: { _id: user._id }
+  //         });
+  //     } catch (e) {
+  //         console.error(e);
+  //     }
+  // };
+
+  return (
+    <div>
+      <h1>
+        Welcome to{" "}
+        {userParameter
+          ? `${user.username}'s gallery!`
+          : `your gallery, ${user.username}!`}{" "}
+      </h1>
+      <Box
+        p="10"
+        maxW="lg"
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+      >
+        <Box
+          p="6"
+          maxW="sm"
+          borderWidth="1px"
+          borderRadius="sm"
+          overflow="hidden"
+        >
+          <img src={img} />
+          <Button
+            type="button"
+            colorScheme="blue"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Edit Profile Photo
+          </Button>
+        </Box>
+      </Box>
+    </div>
+  );
 };
 
 export default Profile;
+
+

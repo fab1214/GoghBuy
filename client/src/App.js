@@ -68,10 +68,11 @@ function App() {
 						<div>
 							<Switch>
 								<Route exact path="/" component={Home} />
+								<Route exact path="/products" component={Home} />
 								<Route exact path="/login" component={Login} />
 								<Route exact path="/signup" component={SignUp} />
 								<Route exact path="/cart" component={Cart} />
-								<Route exact path="/profile/:username" component={Profile} />
+								<Route exact path="/profile/:username?" component={Profile} />
 								<Route exact path="/success" component={Success} />
 							</Switch>
 						</div>
