@@ -25,6 +25,7 @@ const userSchema = new Schema({
 	profilePic: {
 		type: String,
 		required: false,
+		default: 'default-avi.png'
 	},
 	bio: {
 		type: String,

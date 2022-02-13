@@ -87,20 +87,20 @@ db.once("open", async () => {
 	console.log("products seeded");
 	// console.log(products);
 
-	await Category.deleteMany();
+	// await Category.deleteMany();
 
-	const categories = await Category.insertMany([
-		{ name: "Outdoors", products: [products[0], products[1]] },
-		{ name: "Portraits", products: [products[2], products[3]] },
-		{ name: "French", products: [products[4], products[5]] },
-		{ name: "Sports", products: [products[6], products[7]] },
-		{ name: "Random", products: [products[8]] },
-	]);
+	// const categories = await Category.insertMany([
+	// 	{ name: "Outdoors", products: [products[0], products[1]] },
+	// 	{ name: "Portraits", products: [products[2], products[3]] },
+	// 	{ name: "French", products: [products[4], products[5]] },
+	// 	{ name: "Sports", products: [products[6], products[7]] },
+	// 	{ name: "Random", products: [products[8]] },
+	// ]);
 
 	await User.deleteMany();
 
 	await User.create({
-		username: "Van Gogh",
+		username: "VanGogh",
 		email: "gogh@gmail.com",
 		password: "test12345",
 		profilePic: "van-gogh.png",
@@ -109,7 +109,7 @@ db.once("open", async () => {
 	});
 
 	await User.create({
-		username: "Salvador Dali",
+		username: "SalvadorDali",
 		email: "dali@gmail.com",
 		password: "test12345",
 		profilePic: "salvador-dali.png",
@@ -118,7 +118,7 @@ db.once("open", async () => {
 	});
 
 	await User.create({
-		username: "Andy Warhol",
+		username: "AndyWarhol",
 		email: "warhol@gmail.com",
 		password: "test12345",
 		profilePic: "warhol.jpg",

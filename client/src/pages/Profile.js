@@ -7,7 +7,17 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
-import { Box, Image, Flex, HStack, Center, Button} from "@chakra-ui/react";
+import { Box, Image, Flex, HStack, Center, Button } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 import img from "../assets/img/default-avi.png";
 
 const Profile = () => {
@@ -35,6 +45,75 @@ const Profile = () => {
     return <h4>This username doesn't exist!</h4>;
   }
 
+  //modal functions
+  function AddProduct() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    return (
+      <>
+        <Button colorScheme="orange" onClick={onOpen}>
+          Ready to sell?
+        </Button>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Add your piece to the market place</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              Please fill out the fields below to list your artpiece for sale.
+              <form>
+                  
+              </form>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="orange" mr={3} onClick={onClose}>
+                Start Selling!
+              </Button>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  }
+
+  function UploadPhoto() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    return (
+      <>
+        <Button colorScheme="blue" onClick={onOpen}>
+          Edit Profile Photo
+        </Button>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Upload a new profile photo</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <form action="/" method="POST" encType="multipart/form-data">
+                <p>Select an image to set as your new profile photo</p>
+                <input type="file" name="file" accept="image/*" />
+              </form>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="orange" mr={3} onClick={onClose}>
+                Upload
+              </Button>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  }
+
   // const handleClick = async () => {
   //     try {
   //         await addProduct({
@@ -53,35 +132,43 @@ const Profile = () => {
           ? `${user.username}'s gallery!`
           : `your gallery, ${user.username}!`}{" "}
       </h1>
-      <Box
-        p="10"
-        maxW="lg"
+      {/* <Box
+        p="6"
+        maxW="sm"
         borderWidth="1px"
-        borderRadius="lg"
+        borderRadius="sm"
         overflow="hidden"
-      >
-        <Box
-          p="6"
-          maxW="sm"
-          borderWidth="1px"
-          borderRadius="sm"
-          overflow="hidden"
-        >
-          <img src={img} />
-          <Button
-            type="button"
-            colorScheme="blue"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-          >
-            Edit Profile Photo
-          </Button>
-        </Box>
-      </Box>
+      > */}
+      <Image src={img} w={300} />
+      {!userParameter && (
+        <>
+          <UploadPhoto />
+          <AddProduct />
+        </>
+      )}
+      {/* </Box> */}
+      <h4 style={{ fontSize: "25px" }}>
+        {!userParameter ?
+        `Your Products` : `${user.username}'s Products`}
+      </h4>
+      {user.products.map((product) => {
+        return (
+          <>
+            <h2 style={{ fontWeight: "bold" }}>{product.title}</h2>
+            <Image
+              src={`/images/${product.image}`}
+              key={product._id}
+              alt=""
+              boxSize="150px"
+              align="center"
+              borderRadius="full"
+            />
+            <div>{product.description}</div>
+          </>
+        );
+      })}
     </div>
   );
 };
 
 export default Profile;
-
-
