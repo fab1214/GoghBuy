@@ -18,6 +18,8 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
+
+import '../assets/stylesheets/Profile.css';
 import img from "../assets/img/default-avi.png";
 
 const Profile = () => {
@@ -61,9 +63,7 @@ const Profile = () => {
             <ModalCloseButton />
             <ModalBody>
               Please fill out the fields below to list your artpiece for sale.
-              <form>
-                  
-              </form>
+              <form></form>
             </ModalBody>
 
             <ModalFooter>
@@ -125,48 +125,53 @@ const Profile = () => {
   // };
 
   return (
-    <div>
-      <h1>
-        Welcome to{" "}
-        {userParameter
-          ? `${user.username}'s gallery!`
-          : `your gallery, ${user.username}!`}{" "}
-      </h1>
-      {/* <Box
+    <div className="profile__container">
+      <div className="profile__info">
+        <div className="profile__avi">
+          <h1>
+            Welcome to{" "}
+            {userParameter
+              ? `${user.username}'s gallery!`
+              : `your gallery, ${user.username}!`}{" "}
+          </h1>
+          {/* <Box
         p="6"
         maxW="sm"
         borderWidth="1px"
         borderRadius="sm"
         overflow="hidden"
       > */}
-      <Image src={img} w={300} />
-      {!userParameter && (
-        <>
-          <UploadPhoto />
-          <AddProduct />
-        </>
-      )}
-      {/* </Box> */}
-      <h4 style={{ fontSize: "25px" }}>
-        {!userParameter ?
-        `Your Products` : `${user.username}'s Products`}
-      </h4>
-      {user.products.map((product) => {
-        return (
-          <>
-            <h2 style={{ fontWeight: "bold" }}>{product.title}</h2>
-            <Image
-              src={`/images/${product.image}`}
-              key={product._id}
-              alt=""
-              boxSize="150px"
-              align="center"
-              borderRadius="full"
-            />
-            <div>{product.description}</div>
-          </>
-        );
-      })}
+          <Image src={img} w={250}/>
+          {!userParameter && (
+            <>
+              <UploadPhoto />
+              <AddProduct />
+            </>
+          )}
+        </div>
+        {/* </Box> */}
+        <div className="product__container">
+          <h4 style={{ fontSize: "25px" }}>
+            {!userParameter ? `Your Products` : `${user.username}'s Products`}
+          </h4>
+          {user.products.map((product) => {
+            return (
+              <>
+                <h2 style={{ fontWeight: "bold" }}>{product.title}</h2>
+                <Image
+                  src={`/images/${product.image}`}
+                  key={product._id}
+                  alt=""
+                  boxSize="150px"
+                  align="center"
+                  borderRadius="full"
+                />
+                <div>${product.price}</div>
+              </>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

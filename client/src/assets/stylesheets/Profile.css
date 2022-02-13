@@ -1,0 +1,10 @@
+.profile__container {
+    width: 100%;
+    margin-top: 2%
+}
+
+.profile__info {
+    display: flex;
+    justify-content: space-around;
+}
+
