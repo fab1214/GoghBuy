@@ -6,7 +6,7 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 // import { ADD_PRODUCT } from '../utils/mutations';
 
 import Auth from "../utils/auth";
-
+import Product from "../components/Product";
 import { Box, Image, Flex, HStack, Center, Button } from "@chakra-ui/react";
 import {
   Modal,
@@ -157,16 +157,13 @@ const Profile = () => {
           {user.products.map((product) => {
             return (
               <>
-                <h2 style={{ fontWeight: "bold" }}>{product.title}</h2>
-                <Image
-                  src={`/images/${product.image}`}
-                  key={product._id}
-                  alt=""
-                  boxSize="150px"
-                  align="center"
-                  borderRadius="full"
-                />
-                <div>${product.price}</div>
+              	<Product
+				key={product._id}
+				_id={product._id}
+				title={product.title}
+				price={product.price}
+				image={product.image}
+				/>
               </>
             );
           })}
