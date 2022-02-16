@@ -29,8 +29,6 @@ const typeDefs = gql`
 		description: String
 		image: String
 		price: Float
-		quantity: Int
-		rating: Int
 	}
 
 	type Order {
