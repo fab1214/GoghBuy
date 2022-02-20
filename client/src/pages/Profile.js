@@ -42,23 +42,21 @@ const Profile = () => {
     title: "",
     description: "",
     price: "",
-    image: "",
   });
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { title, description, price, image } = formState;
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const handleChange = (e) => {
-    e.preventDefault();
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formState);
-
+    setFormState("");
   };
 
   //if we run QUERY_ME, response = data.me, if we run QUERY_USER, response = data.user
@@ -93,9 +91,9 @@ const Profile = () => {
               Please fill out the fields below to list your artpiece for sale.
               <FormControl>
                   <FormLabel htmlFor='title'>Name of Product</FormLabel>
-                  <input type='text' defaultValue={title} name="title" onBlur={handleChange}/>
+                  <Input type='text' defaultValue={title} name="title" onBlur={handleChange}/>
                   <FormLabel htmlFor='description'>Product Description</FormLabel>
-                  <input type='text' name="description" defaultValue={description} name="description" onBlur={handleChange}/>
+                  <Input type='text' name="description" defaultValue={description} name="description" onBlur={handleChange}/>
                   <FormLabel htmlFor='price'>Price: $</FormLabel>
                   <NumberInput min={1} name="price" defaultValue={price} name="price" onBlur={handleChange}>
                     <NumberInputField />
@@ -140,7 +138,7 @@ const Profile = () => {
             <ModalBody>
               <form action="/" method="POST" encType="multipart/form-data">
                 <p>Select an image to set as your new profile photo</p>
-                <input type="file" name="file" accept="image/*" />
+                <Input type="file" name="file" accept="image/*" />
               </form>
             </ModalBody>
 
@@ -184,6 +182,7 @@ const Profile = () => {
             </>
           )}
         </div>
+
         {/* </Box> */}
         <div className="product__container">
           <h4 style={{ fontSize: "25px" }}>
