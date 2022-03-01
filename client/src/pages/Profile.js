@@ -16,7 +16,7 @@ const Profile = () => {
     console.log(user)
 
     if (auth.loggedIn() && auth.getProfile().data.username === userParam) {
-        return <Redirect to={"/profile/"+auth.getProfile().data.username} />
+        return <Redirect to={"/profile/" + auth.getProfile().data.username} />
     }
     if (loading) {
         return <div>Loading...</div>
@@ -46,8 +46,8 @@ const Profile = () => {
                     Viewing {userParam ? `${user.username}'s` : 'your'} profile.
                 </h2>
             </div>
-            <Flex w="full" justifyContent="center">
-                <Box>
+            <div className="row">
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <Center>
                         <img
                             style={{}}
@@ -60,22 +60,24 @@ const Profile = () => {
 
                     <h4 style={{ textAlign: "center", fontSize: "25px" }}>Your Products...</h4>
                     <Flex direction="row">
-                        {user.products.map(product => {
-                            return (
-                                <>
-                                    <h2 style={{fontWeight: "bold"}}>{product.title}</h2>
-                                    <Image
-                                        src={`/images/${product.image}`}
-                                        key={product._id}
-                                        alt=""
-                                        boxSize="150px"
-                                        align="center"
-                                        borderRadius="full"
-                                    />
-                                  <div>{product.description}</div>
-                                </>
-                            )
-                        })}
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                            {user.products.map(product => {
+                                return (
+                                    <>
+                                        <h2 style={{ fontWeight: "bold" }}>{product.title}</h2>
+                                        <Image
+                                            src={`/images/${product.image}`}
+                                            key={product._id}
+                                            alt=""
+                                            boxSize="150px"
+                                            align="center"
+                                            borderRadius="full"
+                                        />
+                                        <div className="small text-muted mb-0">{product.description}</div>
+                                    </>
+                                )
+                            })}
+                        </div>
                     </Flex>
 
                     <h4 style={{ textAlign: "center", fontSize: "25px" }}>Your Orders...</h4>
@@ -84,8 +86,8 @@ const Profile = () => {
                             {user.order}
                         </Flex>
                     </HStack>
-                </Box>
-            </Flex>
+                </div>
+            </div>
         </div>
     )
 };
